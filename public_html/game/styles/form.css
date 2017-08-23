@@ -1,0 +1,39 @@
+@import 'http://fonts.googleapis.com/css?family=Raleway';
+#login_form {
+margin: 0 auto;
+width: 30%;
+
+}
+#login_wrapper form label {
+    line-height: 60px;
+    font-size: 17px;
+    font-family: 'raleway';
+
+}
+#login_form input[type=text], input[type=password] {
+width:100%;
+padding:10px;
+margin-top:8px;
+border:1px solid #ccc;
+padding-left:5px;
+font-size:16px;
+font-family:raleway;
+box-sizing: border-box;
+-moz-box-sizing: border-box;
+
+}
+#login_form input[type=submit] {
+  width:100%;
+  background-color:#41a6f4;
+  color:#fff;
+  border:2px solid #41a6f4;
+  height: 35px;
+  font-size:17px;
+  cursor:pointer;
+  border-radius:5px;
+  margin-bottom:15px;
+  margin-top: 20px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+
+}
