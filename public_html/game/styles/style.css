@@ -1,13 +1,67 @@
-body {
-  width:100%;
-  height:100%;
-}
-.container {
+body, html {
   width: 100%;
+  height:100%;
+  margin: 0;
+  padding: 0;
+}
+.container-fluid {
+  padding: 0;
+  margin: 0 auto;
+}
+#game-wrapper {
+  width: 88%;
+  margin: 0 auto;
+  padding: 0;
   height: 100%;
 }
-#login_wrapper {
-  margin: 0 auto;
-  width: 50%;
+#game-map-img {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  display: block;
 }
-canvas { display:block; }
+#game_info_wrapper-1 {
+position: absolute;
+float: left;
+background-image: url('../images/col-bg.jpg');
+height: 100%;
+width: 140px;
+z-index: 1;
+}
+#game_info_wrapper-2 {
+  position: relative;
+float: right;
+background-image: url('../images/col-bg.jpg');
+height: 100%;
+width: 140px;
+z-index: 1;
+}
+.game_info_el {
+  margin-top: 35px;
+
+}
+.game_info_header {
+float: left;
+color: white;
+text-align: center;
+line-height: 25px;
+padding: 5px;
+}
+#units_wrapper {
+float: left;
+}
+.game_info_text {
+color: white;
+text-align: center;
+line-height: 30px;
+width: 100%;
+}
+.game_info_icon-arrow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  margin-bottom: 10px;
+  cursor: pointer;
+}

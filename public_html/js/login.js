@@ -20,15 +20,12 @@ $('#login_form').submit(function(e) {
 
 socket.on('login_response', function(data){
   if(data != "login_fail"){
-  alert("Logowanie poprawne, witaj " + data);
-  /*response.writeHead(301,
-  {Location: 'localhost:80/game.js'}
-  );
-  response.end();*/
-  window.location.replace("http://localhost:80/game");
+  //alert("Logowanie poprawne, witaj " + data);
+  console.log("Logowanie poprawne");
+   window.location.replace("http://localhost:80/game");
   } else {
     alert("Logowanie niepoprawne");
-}
+  }
 });
 
 /*var canvas = document.getElementById('game-map');

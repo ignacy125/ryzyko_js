@@ -5,19 +5,73 @@
     <meta charset="UTF-8" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
     <script src="http://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="libs/imageMapResizer.min.js"></script>
+    <script src="libs/jquery.maphilight.min.js"></script>
+    <script src="../js/locate_units.js"></script>
+    <script src="../js/functions.js"></script>
     <link href="styles/style.css" rel="stylesheet" type="text/css">
-    <link href="styles/form.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<div class="container">
 
+<div class="container-fluid">
+
+  <div id="game_info_wrapper-1">
+        <h4 class="game_info_header"><code>#user_name#'s</code><br /> turn</h3>
+      <div class="game_info_el">
+          <p class="game_info_text">
+            <span>Units to deploy: <code>#units_amount#</code></span>
+            <span>Stage:<br /><code>#stage_number#</code></span>
+            <span>Turn: <br /><code>#turn_number#</code></span><br />
+            <span>Your color:<br /><code>#color_name#</code></span>
+            <span>Countries owned:<br /><code>#countries_amount#</code></span>
+
+          </p>
+      </div>
+      <div class="game_info_el">
+        <button id="locate_unit"> Rozlokuj jednostkę </button>
+        <!-- <button id="show_user_countries">Wyróżnij swoje kraje</button> -->
+      </div>
+      <img src="images/arrow.png" alt="Arrow" height="24" width="24" class="game_info_icon-arrow"/>
+  </div>
+
+
+  <center>
+  <div id="game-wrapper">
+    <img src="images/game-map.jpg" id="game-map-img" usemap="#game-map" >
+    <map name="game-map" id="game-map">
+      <area target="" alt="Alaska" data-title="Alaska" href="" coords="29,88,82,114" shape="rect">
+      <area target="" alt="North_west" data-title="North_west" href="" coords="91,84,227,108" shape="rect">
+      <area target="" alt="Alberta" data-title="Alberta" href="" coords="114,144,170,163" shape="rect">
+      <area target="" alt="Ontario" data-title="Ontario" href="" coords="183,163,234,177" shape="rect">
+      <area target="" alt="Western_usa" data-title="Western_usa" href="" coords="112,211,190,237" shape="rect">
+      <area target="" alt="Eastern_usa" data-title="Eastern_usa" href="" coords="180,250,253,271" shape="rect">
+      <area target="" alt="Central_america" data-title="Central_america" href="" coords="128,286,168,371,191,361,144,282" shape="poly">
+      <area target="" alt="Quebec" data-title="Quebec" href="" coords="256,163,306,176" shape="rect">
+      <area target="" alt="Greenland" data-title="Greenland" href="" coords="303,50,383,68" shape="rect">
+      <area target="" alt="Venezuela" data-title="Venezuela" href="" coords="197,371,261,390" shape="rect">
+      <area target="" alt="Brazil" data-title="Brazil" href="" coords="268,438,325,456" shape="rect">
+      <area target="" alt="Peru" data-title="Peru" href="" coords="227,472,266,489" shape="rect">
+      <area target="" alt="Argentina" data-title="Argentina" href="" coords="227,543,287,556" shape="rect">
+       <area target="" alt="Madagascar" data-title="Madagascar" href="" coords="614,638,637,649,668,571,648,565" shape="poly">
+    </map>
+  </div>
+  </center>
 </div>
 
-<button id="locate_unit"> Rozlokuj jednostkę </button>
-<img src="images/game-map.jpg" id="game-map-img" />
-<script src="../js/locate_units.js"></script>
-<script src="js/login.js"></script>
-<script src="js/functions.js"></script>
+
+<script>
+$(document).ready(function(){
+  document.getElementById('game-map-img').draggable = false;
+  $('map').imageMapResize();
+  $('#game-map-img').maphilight({
+  });
+
+
+});
+</script>
+
 </body>
 
 </html>

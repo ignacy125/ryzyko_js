@@ -3,21 +3,24 @@ var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server,{});
 var fs = require('fs');
-var database = require('./modules/database');
+var sha1 = require('sha1');
+var database = require('./modules/database-connect');
+var getBsData  = require('./modules/get-bs-data');
+var fetch_data = require('./modules/fetch-data');
 var update_countries = require('./modules/update_countries');
+//var getUnitAmount = require('./modules/get-unit-amount');
 var port = 80;
 
-var username = 'ignacy';
-var password = '12345';
+//var hashed_password = sha1(password);
 
-var passwordHash = require('password-hash');
+/*var passwordHash = require('password-hash');
 var hashedPassword = passwordHash.generate(password);
+*/
 
-console.log(hashedPassword);
 //app.use(express.static(__dirname)); // Current directory is root
 app.use('/', express.static(__dirname + '/public_html')); //  "public" off of current is root
 server.listen(port);
-console.log("working on port " + port);
+console.log("Working on port " + port);
 
 app.get('/', function (req, res) {
   res.writeHead(301,
@@ -25,49 +28,6 @@ app.get('/', function (req, res) {
   );
   res.end();
 })
-
-
-
-
- function isUserValid(username, password) {
-   var value = false;
-   connection = database.connect();
-   var sql = 'SELECT ID FROM Users ';
-   sql += 'WHERE nick = ' + connection.escape(username);
-   sql += ' AND password = ' + connection.escape(password);
-      connection.query(sql,
-        function (error, results, fields) {
-          if (error) { return false;};
-        console.log('The solution is: ', results[0].ID);
-        value = true;
-
-     });
-  connection.end();
-
-}
-
-function fetch_data(data, callback) {
-  connection = database.connect();
-  var sql = 'SELECT ID FROM Users ';
-  sql += 'WHERE nick = ' + connection.escape(data.username);
-  sql += ' AND password = ' + connection.escape(data.password);
-     connection.query(sql,
-       function (error, results, fields) {
-         if (error) {
-           callback(false);
-         };
-        if (results.length > 0) {
-          callback(true);
-
-        } else {
-          callback(false);
-
-        }
-
-    });
- connection.end();
-
-}
 
 function handler (req, res) {
   fs.readFile(__dirname + '/index.html',
@@ -81,11 +41,17 @@ function handler (req, res) {
   });
 }
 
+/*
+ var user_unit_amount = 'SELECT Units_to_deploy FROM Users WHERE ID = 1';
+*/
+
 SOCKETS_LIST = {};
 io.on('connection', function (socket) {
   socket.id = Math.random();
   SOCKETS_LIST[socket.id] = socket;
-  console.log("client connected");
+  console.log("user connected");
+  var test = sha1("sdadas");
+  console.log(test);
     socket.on('hello', function (data) {
       console.log("hello " + data);
       socket.emit("server_msg", {
@@ -93,15 +59,21 @@ io.on('connection', function (socket) {
       });
     });
     socket.on('login', function(data){
-      fetch_data(data, function(valid){
+      fetch_data.fetch_data(data, function(valid){
         if(valid) {
             socket.emit("login_response", data.username);
+            socket.emit("login_response", data.password);
+            // var unit_info_bs = getBsData.getBsData(data, funtion(valid){
+            //
+            //
+            // }), 'Units_to_deploy', 'Users');
+            // console.log(unit_info_bs);
         } else {
             socket.emit("login_response", "login_fail");
         }
       });
     });
-    socket.on('unit_locate_data', function(data) {
+    /*socket.on('unit_locate_data', function(data) {
      update_countries.unit_to_country(data, function(valid){
        if(valid) {
           console.log("work");
@@ -111,7 +83,18 @@ io.on('connection', function (socket) {
            socket.emit("update_state", "fail");
        }
      });
+   });*/
+    socket.on('send_country', function(data) {
+      update_countries.unit_to_country(data, function(valid) {
+        if(valid) {
+          console.log("Jednostka została przypisana do kraju " + data.selected_country);
+        } else {
+          console.log("Błąd");
+        }
+
+      });
     });
+
 });
 
 setInterval(function(){
@@ -121,6 +104,3 @@ setInterval(function(){
       msg : "server_hello",
     });
   }},1000);
-// function setInterval() {
-//
-// }
