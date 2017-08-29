@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var session = require('express-session');
 var server = require('http').Server(app);
 var io = require('socket.io')(server,{});
 var fs = require('fs');
@@ -40,7 +41,6 @@ function handler (req, res) {
     res.end(data);
   });
 }
-
 /*
  var user_unit_amount = 'SELECT Units_to_deploy FROM Users WHERE ID = 1';
 */
@@ -84,7 +84,7 @@ io.on('connection', function (socket) {
        }
      });
    });*/
-    socket.on('send_country', function(data) {
+    socket.on('locate_unit', function(data) {
       update_countries.unit_to_country(data, function(valid) {
         if(valid) {
           console.log("Jednostka została przypisana do kraju " + data.selected_country);
@@ -93,6 +93,17 @@ io.on('connection', function (socket) {
         }
 
       });
+    });
+    socket.on('country_unit_amount', function(data){
+      update_countries.get_unit_amount(data, function(valid) {
+        if(valid) {
+          console.log(data);
+        } else {
+          console.log("Błąd");
+        }
+
+      });
+
     });
 
 });
