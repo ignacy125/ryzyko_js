@@ -9,11 +9,9 @@ var database = require('./modules/database-connect');
 var getBsData  = require('./modules/get-bs-data');
 var fetch_data = require('./modules/fetch-data');
 var update_countries = require('./modules/update_countries');
-//var getUnitAmount = require('./modules/get-unit-amount');
 var port = 80;
 
 //var hashed_password = sha1(password);
-
 /*var passwordHash = require('password-hash');
 var hashedPassword = passwordHash.generate(password);
 */
@@ -41,9 +39,6 @@ function handler (req, res) {
     res.end(data);
   });
 }
-/*
- var user_unit_amount = 'SELECT Units_to_deploy FROM Users WHERE ID = 1';
-*/
 
 SOCKETS_LIST = {};
 io.on('connection', function (socket) {
@@ -63,6 +58,7 @@ io.on('connection', function (socket) {
         if(valid) {
             socket.emit("login_response", data.username);
             socket.emit("login_response", data.password);
+
             // var unit_info_bs = getBsData.getBsData(data, funtion(valid){
             //
             //
@@ -70,6 +66,7 @@ io.on('connection', function (socket) {
             // console.log(unit_info_bs);
         } else {
             socket.emit("login_response", "login_fail");
+            socket.emit("country_unit_get_response", "result");
         }
       });
     });
@@ -88,6 +85,8 @@ io.on('connection', function (socket) {
       update_countries.country.addUnit(data, function(valid) {
         if(valid) {
           console.log("Jednostka została przypisana do kraju " + data.selected_country);
+
+
         } else {
           console.log("Błąd");
         }
@@ -95,9 +94,12 @@ io.on('connection', function (socket) {
       });
     });
     socket.on('country_unit_get', function(data){
-      update_countries.get_unit_amount(data, function(valid) {
+      update_countries.country.getUnitAmount(data, function(valid, result) {
         if(valid) {
-          console.log(data);
+          // socket.emit("server_msg", "data");
+          console.log(result);
+          // socket.emit("country_unit_get_response", "result");
+          socket.emit("country_unit_get_response", "result");
         } else {
           console.log("Błąd");
         }
@@ -111,10 +113,10 @@ io.on('connection', function (socket) {
 
 });
 
-setInterval(function(){
-  for (var i in SOCKETS_LIST ){
-    socket = SOCKETS_LIST[i];
-    socket.emit("server_msg", {
-      msg : "server_hello",
-    });
-  }},1000);
+// setInterval(function(){
+//   for (var i in SOCKETS_LIST ){
+//     socket = SOCKETS_LIST[i];
+//     socket.emit("country_unit_get_response", {
+//       msg : "server_hello",
+//     });
+//   }},1000);

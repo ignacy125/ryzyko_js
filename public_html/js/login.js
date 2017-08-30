@@ -4,9 +4,13 @@ function updateValues() {
   socket.emit("hello", "world");
 }
 
-socket.on('server_msg', function(data){
+socket.on('country_unit_get_response', function(data){
   console.log(data.msg);
 });
+
+// socket.on('country_unit_get_response', function(data){
+//   console.log(data);
+// });
 
 $('#login_form').submit(function(e) {
   var username_value = $('#username').val();
@@ -24,9 +28,11 @@ socket.on('login_response', function(data){
   console.log("Logowanie poprawne");
    window.location.replace("http://localhost:80/game");
   } else {
+    console.log("niepoprawne");
     alert("Logowanie niepoprawne");
   }
 });
+
 
 /*var canvas = document.getElementById('game-map');
 var context = canvas.getContext('2d');

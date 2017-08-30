@@ -38,15 +38,18 @@ var country = {
 
     getUnitAmount: function(data, callback) {
       connection = database.connect();
-      var query = 'SELECT Name, Units_amount FROM Countries ';
+      var query = 'SELECT Units_amount FROM Countries ';
       query += 'WHERE Name = ' + connection.escape(data.selected_country);
       connection.query(query,
         function (error, results, fields) {
           if (error) {
             console.log(error);
-            callback(false);
+            callback(false, null);
+          }
+          if (results.length > 0) {
+            callback(true, results[0]);
           } else {
-            callback(true);
+            callback(false, null);
           }
      });
     connection.end();

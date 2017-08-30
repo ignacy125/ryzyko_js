@@ -36,6 +36,10 @@ var country = {
         //"selected_country": country_id,
         "selected_country": country_name,
     });
+    socket.emit("login", {
+        "username": "username",
+        "password": "password",
+    });
   },
 
     get: function(country_name) {
