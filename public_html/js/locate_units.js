@@ -11,85 +11,83 @@ $(document).ready(function(){
           alert("Wystąpił błąd lub nie wybrałeś kraju.");
           break;
           case 'Alaska':
-                  //country.emit('Alaska');
-                  //getCountryUnitAmount('Alaska');
-                  country.emit('Alaska');
+                  country.unit.add('Alaska');
               break;
           case 'Alberta':
-                  country.emit('Alberta');
+                  country.unit.add('Alberta');
               break;
           case 'North_west':
-                  country.emit('North_west');
+                  country.unit.add('North_west');
               break;
           case 'Ontario':
-                  country.emit('Ontario');
+                  country.unit.add('Ontario');
               break;
           case 'Western_usa':
-                  country.emit('Western_usa');
+                  country.unit.add('Western_usa');
               break;
           case 'Eastern_usa':
-                  country.emit('Eastern_usa');
+                  country.unit.add('Eastern_usa');
               break;
           case 'Quebec':
-                  country.emit('Quebec');
+                  country.unit.add('Quebec');
               break;
           case ' Greenland':
-                  country.emit('Greenland');
+                  country.unit.add('Greenland');
               break;
           case 'Central_america':
-                  country.emit('Central_america');
+                  country.unit.add('Central_america');
               break;
           case 'Venezuela':
-                  country.emit('Venezuela');
+                  country.unit.add('Venezuela');
               break;
           case 'Brazil':
-                  country.emit('Brazil');
+                  country.unit.add('Brazil');
               break;
           case 'Peru':
-                  country.emit('Peru');
+                  country.unit.add('Peru');
               break;
           case 'Argentina':
-                  country.emit('Argentina');
+                  country.unit.add('Argentina');
               break;
           case 'North_africa':
-                  country.emit('North_africa');
+                  country.unit.add('North_africa');
             break;
           case 'South_africa':
-                  country.emit('South_africa');
+                  country.unit.add('South_africa');
             break;
           case 'East_africa':
-                  country.emit('East_africa');
+                  country.unit.add('East_africa');
             break;
           case 'Egypt':
-                  country.emit('Egypt');
+                  country.unit.add('Egypt');
             break;
           case 'Congo':
-                  country.emit('Congo');
+                  country.unit.add('Congo');
             break;
           case 'Madagascar':
-                  country.emit('Madagascar');
+                  country.unit.add('Madagascar');
             break;
           case 'Iceland':
-                  country.emit('Iceland');
+                  country.unit.add('Iceland');
             break;
           case 'Great_britain':
-                  country.emit('Great_britain');
+                  country.unit.add('Great_britain');
             break;
           case 'Western_europe':
-                  country.emit('Western_europe');
+                  country.unit.add('Western_europe');
             break;
           case 'Northern_europe':
-                  country.emit('Northern_europe');
+                  country.unit.add('Northern_europe');
             break;
           case 'Southern_europe':
-                  country.emit('Southern_europe');
-              break;
+                  country.unit.add('Southern_europe');
+            break;
           case 'Ukraine':
-                  country.emit('Ukraine');
-              break;
+                  country.unit.add('Ukraine');
+            break;
           case 'Scandinavia':
-                  country.emit('Scandinavia');
-              break;
+                  country.unit.add('Scandinavia');
+            break;
       }
   });
 

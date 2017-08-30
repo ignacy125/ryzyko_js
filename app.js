@@ -84,8 +84,8 @@ io.on('connection', function (socket) {
        }
      });
    });*/
-    socket.on('locate_unit', function(data) {
-      update_countries.unit_to_country(data, function(valid) {
+    socket.on('country_unit_add', function(data) {
+      update_countries.country.addUnit(data, function(valid) {
         if(valid) {
           console.log("Jednostka została przypisana do kraju " + data.selected_country);
         } else {
@@ -94,7 +94,7 @@ io.on('connection', function (socket) {
 
       });
     });
-    socket.on('country_unit_amount', function(data){
+    socket.on('country_unit_get', function(data){
       update_countries.get_unit_amount(data, function(valid) {
         if(valid) {
           console.log(data);
@@ -103,6 +103,9 @@ io.on('connection', function (socket) {
         }
 
       });
+    });
+    socket.on('player_showCountries', function(data){
+
 
     });
 

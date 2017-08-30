@@ -32,7 +32,11 @@
         <button id="locate_unit"> Rozlokuj jednostkę </button>
         <!-- <button id="show_user_countries">Wyróżnij swoje kraje</button> -->
       </div>
-      <img src="images/arrow.png" alt="Arrow" height="24" width="24" class="game_info_icon-arrow"/>
+      <!-- <div class="game_info_el">
+        <button id="show_countries"> Pokaż moje kraje </button>
+         <button id="show_user_countries">Wyróżnij swoje kraje</button>
+      </div>
+      <img src="images/arrow.png" alt="Arrow" height="24" width="24" class="game_info_icon-arrow"/> -->
   </div>
 
   <div id="game-wrapper">
@@ -74,11 +78,11 @@
 
 <script>
 $(document).ready(function(){
+
   document.getElementById('game-map-img').draggable = false;
   $('map').imageMapResize();
   $('#game-map-img').maphilight({
   });
-
 
 });
 </script>
