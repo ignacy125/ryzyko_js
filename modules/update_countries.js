@@ -22,7 +22,7 @@ var country = {
     addUnit: function(data, callback){
         connection = database.connect();
         var query = 'UPDATE Countries ';
-        query += 'SET Units_Amount = Units_Amount + 1 ';
+        query += 'SET Units_Amount = Units_Amount + ' + connection.escape(data.unit_amount) + ' ';
         query += 'WHERE Name = ' + connection.escape(data.selected_country);
            connection.query(query,
              function (error, results, fields) {

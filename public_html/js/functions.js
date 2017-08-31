@@ -26,15 +26,11 @@ var player = {
 
 var country = {
   unit: {
-    add: function(country_name, country_id) {
-      if(typeof country_id === 'undefined') {
-        country_id = 'default';
-      } else if (typeof country_name === 'undefined') {
-        country_name = 'default';
-      }
+    add: function(country_name, amount) {
       socket.emit("country_unit_add", {
         //"selected_country": country_id,
         "selected_country": country_name,
+        "unit_amount": amount,
     });
   },
 
@@ -45,14 +41,3 @@ var country = {
     }
   }
 };
-
-$(document).ready(function() {
-
-    $('.game_info_icon-arrow').click(function() {
-        $('#game_info_wrapper-1').toggle();
-    });
-    $('#show_countries').click(function(){
-      player.showCountries();
-    });
-
-});

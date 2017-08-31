@@ -71,6 +71,7 @@ io.on('connection', function (socket) {
       update_countries.country.addUnit(data, function(valid) {
         if(valid) {
           console.log("Jednostka została przypisana do kraju " + data.selected_country);
+          io.emit("country_unit_add_res", data.unit_amount)
         } else {
           console.log("Błąd");
         }

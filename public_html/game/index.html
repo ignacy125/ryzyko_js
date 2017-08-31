@@ -27,12 +27,12 @@
             <span>Turn: <br /><code>#turn_number#</code></span><br />
             <span>Your color:<br /><code>#color_name#</code></span>
             <span>Countries owned:<br /><code>#countries_amount#</code></span>
-            <span class="game_info-units_amount_title">Units Amount:</span>
-            <span class="game_info-units_amount"></span>
           </p>
-      </div>
-      <div class="game_info_el">
-        <button id="locate_unit"> Rozlokuj jednostkę </button>
+          <p class="game_info_text">
+              <span class="game_info_text-log"> </span> <br />
+              <span class="game_info-units_amount_title">Units Amount:</span>
+              <span class="game_info-units_amount"></span>
+          </p>
       </div>
   </div>
 
@@ -65,6 +65,22 @@
       <area target="" alt="Southern_europe" data-title="Southern_europe" href="" coords="472,269,542,299" shape="rect">
       <area target="" alt="Ukraine" data-title="Ukraine" href="" coords="562,156,634,173" shape="rect">
       <area target="" alt="Scandinavia" data-title="Scandinavia" href="" coords="463,145,483,165,546,90,528,75" shape="poly">
+      <area target="" alt="Middle_east" data-title="Middle_east" href="" coords="586,330,667,347" shape="rect">
+      <area target="" alt="Afghanistan" data-title="Afghanistan" href="" coords="647,237,723,252" shape="rect">
+      <area target="" alt="Ural" data-title="Ural" href="" coords="676,145,718,168" shape="rect">
+      <area target="" alt="Siberia" data-title="Siberia" href="" coords="727,92,780,109" shape="rect">
+      <area target="" alt="Yakutsk" data-title="Yakutsk" href="" coords="809,67,861,83" shape="rect">
+      <area target="" alt="Kamchatka" data-title="Kamchatka" href="" coords="881,67,951,85" shape="rect">
+      <area target="" alt="Irkutsk" data-title="Irkutsk" href="" coords="800,150,844,168" shape="rect">
+      <area target="" alt="Mongolia" data-title="Mongolia" href="" coords="791,219,864,239" shape="rect">
+      <area target="" alt="China" data-title="China" href="" coords="770,289,827,306" shape="rect">
+      <area target="" alt="India" data-title="India" href="" coords="707,341,761,360" shape="rect">
+      <area target="" alt="Siam" data-title="Siam" href="" coords="796,374,836,391" shape="rect">
+      <area target="" alt="Indonesia" data-title="Indonesia" href="" coords="789,487,877,514" shape="rect">
+      <area target="" alt="New_guinea" data-title="New_guinea" href="" coords="897,459,959,486" shape="rect">
+      <area target="" alt="Western_australia" data-title="Western_australia" href="" coords="837,588,922,620" shape="rect">
+      <area target="" alt="Eastern_australia" data-title="Eastern_australia" href="" coords="910,559,984,585" shape="rect">
+      <area target="" alt="Japan" data-title="Japan" href="" coords="913,230,960,249" shape="rect">
     </map>
   </div>
 
@@ -79,10 +95,7 @@ $(document).ready(function(){
   document.getElementById('game-map-img').draggable = false;
   $('map').imageMapResize();
   $('#game-map-img').maphilight({
-    fillColor: '00ff00',
     alwaysOn: true,
-
-
   });
 
 });
