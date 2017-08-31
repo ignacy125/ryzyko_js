@@ -7,11 +7,12 @@
     <script src="http://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
     <script src="libs/imageMapResizer.min.js"></script>
     <script src="libs/jquery.maphilight.min.js"></script>
-    <script src="../js/locate_units.js"></script>
+    <script src="../js/country_update.js"></script>
     <script src="../js/functions.js"></script>
-    <link href="styles/style.css" rel="stylesheet" type="text/css">
+
 </head>
 <body>
 
@@ -26,17 +27,13 @@
             <span>Turn: <br /><code>#turn_number#</code></span><br />
             <span>Your color:<br /><code>#color_name#</code></span>
             <span>Countries owned:<br /><code>#countries_amount#</code></span>
+            <span class="game_info-units_amount_title">Units Amount:</span>
+            <span class="game_info-units_amount"></span>
           </p>
       </div>
       <div class="game_info_el">
         <button id="locate_unit"> Rozlokuj jednostkę </button>
-        <!-- <button id="show_user_countries">Wyróżnij swoje kraje</button> -->
       </div>
-      <!-- <div class="game_info_el">
-        <button id="show_countries"> Pokaż moje kraje </button>
-         <button id="show_user_countries">Wyróżnij swoje kraje</button>
-      </div>
-      <img src="images/arrow.png" alt="Arrow" height="24" width="24" class="game_info_icon-arrow"/> -->
   </div>
 
   <div id="game-wrapper">

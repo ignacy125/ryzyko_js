@@ -1,9 +1,5 @@
 $(document).ready(function() {
 
-
-
-
-
   socket = io("http://localhost:9000");
   console.log('test');
   socket.emit('send_request', JSON.stringify(), function(data){
