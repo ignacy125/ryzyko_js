@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  socket = io();
+  // socket = io();
 
   var selected_country;
   $('#game-map area').click(function(event) {
