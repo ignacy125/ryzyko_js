@@ -95,9 +95,10 @@ io.on('connection', function (socket) {
       });
     });
     socket.on('country_unit_get', function(data){
-      update_countries.get_unit_amount(data, function(valid) {
+      update_countries.country.getUnitAmount(data, function(valid, results) {
         if(valid) {
-          console.log(data);
+          console.log(results);
+          io.sockets.emit("country_unit_get_res", results);
         } else {
           console.log("Błąd");
         }
@@ -115,6 +116,6 @@ setInterval(function(){
   for (var i in SOCKETS_LIST ){
     socket = SOCKETS_LIST[i];
     socket.emit("server_msg", {
-      msg : "server_hello",
+      msg : "server_hello: "+ i,
     });
   }},1000);

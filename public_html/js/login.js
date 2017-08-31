@@ -4,10 +4,6 @@ function updateValues() {
   socket.emit("hello", "world");
 }
 
-socket.on('server_msg', function(data){
-  console.log(data.msg);
-});
-
 $('#login_form').submit(function(e) {
   var username_value = $('#username').val();
   if(username_value.length == '') {

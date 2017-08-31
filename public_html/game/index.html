@@ -42,7 +42,7 @@
   <div id="game-wrapper">
     <img src="images/game-map.jpg" id="game-map-img" usemap="#game-map" >
     <map name="game-map" id="game-map">
-      <area target="" alt="Alaska" data-title="Alaska" href="" coords="29,88,82,114" shape="rect">
+      <area target="" alt="Alaska" data-title="Alaska" href="" coords="29,88,82,114" shape="rect" class="{fillColor:'00ff00'}">
       <area target="" alt="North_west" data-title="North_west" href="" coords="91,84,227,108" shape="rect">
       <area target="" alt="Alberta" data-title="Alberta" href="" coords="114,144,170,163" shape="rect">
       <area target="" alt="Ontario" data-title="Ontario" href="" coords="183,163,234,177" shape="rect">
@@ -82,11 +82,16 @@ $(document).ready(function(){
   document.getElementById('game-map-img').draggable = false;
   $('map').imageMapResize();
   $('#game-map-img').maphilight({
+    fillColor: '00ff00',
+    alwaysOn: true,
+
+
   });
 
 });
 </script>
-
+<script src="../js/login.js"></script>
+<script src="../js/listener.js"></script>
 </body>
 
 </html>
