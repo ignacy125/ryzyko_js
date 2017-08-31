@@ -19,7 +19,8 @@ var hashedPassword = passwordHash.generate(password);
 */
 
 //app.use(express.static(__dirname)); // Current directory is root
-app.use('/', express.static(__dirname + '/public_html')); //  "public" off of current is root
+
+app.use('/', express.static(__dirname + '/public_html'));
 server.listen(port);
 console.log("Working on port " + port);
 
@@ -41,9 +42,6 @@ function handler (req, res) {
     res.end(data);
   });
 }
-/*
- var user_unit_amount = 'SELECT Units_to_deploy FROM Users WHERE ID = 1';
-*/
 
 SOCKETS_LIST = {};
 io.on('connection', function (socket) {
@@ -63,27 +61,12 @@ io.on('connection', function (socket) {
         if(valid) {
             socket.emit("login_response", data.username);
             socket.emit("login_response", data.password);
-            // var unit_info_bs = getBsData.getBsData(data, funtion(valid){
-            //
-            //
-            // }), 'Units_to_deploy', 'Users');
-            // console.log(unit_info_bs);
         } else {
             socket.emit("login_response", "login_fail");
         }
       });
     });
-    /*socket.on('unit_locate_data', function(data) {
-     update_countries.unit_to_country(data, function(valid){
-       if(valid) {
-          console.log("work");
-           socket.emit("update_state", "succes");
-       } else {
-         console.log("fail");
-           socket.emit("update_state", "fail");
-       }
-     });
-   });*/
+
     socket.on('country_unit_add', function(data) {
       update_countries.country.addUnit(data, function(valid) {
         if(valid) {
@@ -98,7 +81,7 @@ io.on('connection', function (socket) {
       update_countries.country.getUnitAmount(data, function(valid, results) {
         if(valid) {
           console.log(results);
-          io.sockets.emit("country_unit_get_res", results);
+          io.emit("country_unit_get_res", results);
         } else {
           console.log("Błąd");
         }
