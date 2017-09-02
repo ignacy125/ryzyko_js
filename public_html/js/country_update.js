@@ -25,7 +25,7 @@ $(document).ready(function(){
       country.unit.add(selected_country, 1);
   });
 
-  // Odpowiedź serwera na dodanie jednostki
+  // Odpowiedź serwera na dodanie jednostki (na razie musi być tutaj)
   socket.on('country_unit_add_res', function(data){
       $('.game_info_text-log').html('Unit' + ' (' + data + ') was located to: ' + '<kbd>' + selected_country + '</kbd>');
   });

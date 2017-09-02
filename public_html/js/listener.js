@@ -1,5 +1,5 @@
 socket = io('/game');
-var socket = io.connect('http://localhost:80');
+
 
 // Odpowiedź serwera na informacje o ilości jednostek w kraju
 socket.on("country_unit_get_res", function(data){

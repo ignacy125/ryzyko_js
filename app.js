@@ -66,7 +66,7 @@ io.on('connection', function (socket) {
       });
     });
 });
-io.of('/game')
+  io.of('/game')
    io.on('connection', function (socket) {
        socket.id = Math.random();
         SOCKETS_LIST[socket.id] = socket;
@@ -75,7 +75,7 @@ io.of('/game')
       update_countries.country.addUnit(data, function(valid) {
         if(valid) {
           console.log("Jednostka została przypisana do kraju " + data.selected_country);
-          io.emit("country_unit_add_res", data.unit_amount)
+          socket.emit("country_unit_add_res", data.unit_amount)
         } else {
           console.log("Błąd");
         }
