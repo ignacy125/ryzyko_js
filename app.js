@@ -86,7 +86,7 @@ io.on('connection', function (socket) {
       update_countries.country.getUnitAmount(data, function(valid, results) {
         if(valid) {
           console.log(results);
-          io.emit("country_unit_get_res", results);
+          socket.emit("country_unit_get_res", results);
         } else {
           console.log("Błąd");
         }
@@ -97,7 +97,7 @@ io.on('connection', function (socket) {
       update_countries.country.show(data, function(valid, results) {
         if(valid) {
           console.log(results);
-          io.emit("player_showCountries_res", results);
+          socket.emit("player_showCountries_res", results);
         } else {
           console.log("Błąd");
         }
