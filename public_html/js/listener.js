@@ -1,4 +1,4 @@
-socket = io('/game');
+socket = io();
 
 
 // Odpowiedź serwera na informacje o ilości jednostek w kraju

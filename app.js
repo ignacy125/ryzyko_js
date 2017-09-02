@@ -86,7 +86,7 @@ io.on('connection', function (socket) {
       update_countries.country.getUnitAmount(data, function(valid, results) {
         if(valid) {
           console.log(results);
-          socket.emit("country_unit_get_res", results);
+          io.emit("country_unit_get_res", results);
         } else {
           console.log("Błąd");
         }
