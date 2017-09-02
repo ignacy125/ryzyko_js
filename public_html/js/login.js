@@ -1,4 +1,5 @@
-socket = io();
+socket = io('/logon');
+var socket = io.connect('http://localhost:80');
 
 function updateValues() {
   socket.emit("hello", "world");

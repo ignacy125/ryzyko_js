@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+    <title>Ryzyko</title>
+    <meta charset="UTF-8" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+    <script src="http://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link href="styles/test-style.css" rel="stylesheet" type="text/css">
+    <script src="libs/imageMapResizer.min.js"></script>
+    <script src="libs/jquery.maphilight.min.js"></script>
+    <script src="../js/country_update.js"></script>
+    <script src="../js/functions.js"></script>
+
+</head>
+<body>
+  <div class="page-container">
+    <div class="row">
+      <div class="col-md-1">
+          <h4 class="game_info_header"><code>#user_name#'s</code><br /> turn</h3>
+      </div>
+      <div class="col-md-11">
+        <img src="images/game-map.jpg" id="game-map-img" usemap="#game-map" class="img-responsive" >
+        <map name="game-map" id="game-map">
+          <area target="" alt="Alaska" data-title="Alaska" href="" coords="29,88,82,114" shape="rect" class="{fillColor:'00ff00'}">
+          <area target="" alt="North_west" data-title="North_west" href="" coords="91,84,227,108" shape="rect">
+          <area target="" alt="Alberta" data-title="Alberta" href="" coords="114,144,170,163" shape="rect">
+          <area target="" alt="Ontario" data-title="Ontario" href="" coords="183,163,234,177" shape="rect">
+          <area target="" alt="Western_usa" data-title="Western_usa" href="" coords="112,211,190,237" shape="rect">
+          <area target="" alt="Eastern_usa" data-title="Eastern_usa" href="" coords="180,250,253,271" shape="rect">
+          <area target="" alt="Central_america" data-title="Central_america" href="" coords="128,286,168,371,191,361,144,282" shape="poly">
+          <area target="" alt="Quebec" data-title="Quebec" href="" coords="256,163,306,176" shape="rect">
+          <area target="" alt="Greenland" data-title="Greenland" href="" coords="303,50,383,68" shape="rect">
+          <area target="" alt="Venezuela" data-title="Venezuela" href="" coords="197,371,261,390" shape="rect">
+          <area target="" alt="Brazil" data-title="Brazil" href="" coords="268,438,325,456" shape="rect">
+          <area target="" alt="Peru" data-title="Peru" href="" coords="227,472,266,489" shape="rect">
+          <area target="" alt="Argentina" data-title="Argentina" href="" coords="227,543,287,556" shape="rect">
+          <area target="" alt="Madagascar" data-title="Madagascar" href="" coords="614,638,637,649,668,571,648,565" shape="poly">
+          <area target="" alt="North_africa" data-title="North_africa" href="" coords="419,423,515,443" shape="rect">
+          <area target="" alt="Egypt" data-title="Egypt" href="" coords="519,387,558,406" shape="rect">
+          <area target="" alt="East_africa" data-title="East_africa" href="" coords="624,459,565,490" shape="rect">
+          <area target="" alt="Congo" title="Congo" href="" coords="510,505,562,522" shape="rect">
+          <area target="" alt="South_africa" data-title="South_africa" href="" coords="518,583,569,616" shape="rect">
+          <area target="" alt="Iceland" data-title="Iceland" href="" coords="400,122,453,138" shape="rect">
+          <area target="" alt="Great_britain" data-title="Great_britain" href="" coords="347,199,447,219" shape="rect">
+          <area target="" alt="Western_europe" data-title="Western_europe" href="" coords="392,338,412,352,460,265,440,256" shape="poly">
+          <area target="" alt="Northern_europe" data-title="Northern_europe" href="" coords="466,215,528,239" shape="rect">
+          <area target="" alt="Southern_europe" data-title="Southern_europe" href="" coords="472,269,542,299" shape="rect">
+          <area target="" alt="Ukraine" data-title="Ukraine" href="" coords="562,156,634,173" shape="rect">
+          <area target="" alt="Scandinavia" data-title="Scandinavia" href="" coords="463,145,483,165,546,90,528,75" shape="poly">
+          <area target="" alt="Middle_east" data-title="Middle_east" href="" coords="586,330,667,347" shape="rect">
+          <area target="" alt="Afghanistan" data-title="Afghanistan" href="" coords="647,237,723,252" shape="rect">
+          <area target="" alt="Ural" data-title="Ural" href="" coords="676,145,718,168" shape="rect">
+          <area target="" alt="Siberia" data-title="Siberia" href="" coords="727,92,780,109" shape="rect">
+          <area target="" alt="Yakutsk" data-title="Yakutsk" href="" coords="809,67,861,83" shape="rect">
+          <area target="" alt="Kamchatka" data-title="Kamchatka" href="" coords="881,67,951,85" shape="rect">
+          <area target="" alt="Irkutsk" data-title="Irkutsk" href="" coords="800,150,844,168" shape="rect">
+          <area target="" alt="Mongolia" data-title="Mongolia" href="" coords="791,219,864,239" shape="rect">
+          <area target="" alt="China" data-title="China" href="" coords="770,289,827,306" shape="rect">
+          <area target="" alt="India" data-title="India" href="" coords="707,341,761,360" shape="rect">
+          <area target="" alt="Siam" data-title="Siam" href="" coords="796,374,836,391" shape="rect">
+          <area target="" alt="Indonesia" data-title="Indonesia" href="" coords="789,487,877,514" shape="rect">
+          <area target="" alt="New_guinea" data-title="New_guinea" href="" coords="897,459,959,486" shape="rect">
+          <area target="" alt="Western_australia" data-title="Western_australia" href="" coords="837,588,922,620" shape="rect">
+          <area target="" alt="Eastern_australia" data-title="Eastern_australia" href="" coords="910,559,984,585" shape="rect">
+          <area target="" alt="Japan" data-title="Japan" href="" coords="913,230,960,249" shape="rect">
+        </map>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  $(document).ready(function(){
+
+    document.getElementById('game-map-img').draggable = false;
+    $('map').imageMapResize();
+    $('#game-map-img').maphilight({
+        alwaysOn: true
+    });
+
+  });
+  </script>
+  <script src="../js/listener.js"></script>
+</body>
+</html>

@@ -15,12 +15,6 @@ var player = {
 
 
     });
-  },
-  showCountries: function() {
-    socket.emit("player_showCountries", {
-      "country": country_name,
-
-    });
   }
 };
 

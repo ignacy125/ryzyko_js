@@ -6,10 +6,8 @@ var io = require('socket.io')(server,{});
 var fs = require('fs');
 var sha1 = require('sha1');
 var database = require('./modules/database-connect');
-var getBsData  = require('./modules/get-bs-data');
 var fetch_data = require('./modules/fetch-data');
 var update_countries = require('./modules/update_countries');
-//var getUnitAmount = require('./modules/get-unit-amount');
 var port = 80;
 
 //var hashed_password = sha1(password);
@@ -44,6 +42,7 @@ function handler (req, res) {
 }
 
 SOCKETS_LIST = {};
+io.of('/logon')
 io.on('connection', function (socket) {
   socket.id = Math.random();
   SOCKETS_LIST[socket.id] = socket;
@@ -66,7 +65,12 @@ io.on('connection', function (socket) {
         }
       });
     });
-
+});
+io.of('/game')
+   io.on('connection', function (socket) {
+       socket.id = Math.random();
+        SOCKETS_LIST[socket.id] = socket;
+        console.log("________________USER GAME CONNECTED____________________");
     socket.on('country_unit_add', function(data) {
       update_countries.country.addUnit(data, function(valid) {
         if(valid) {
@@ -82,7 +86,7 @@ io.on('connection', function (socket) {
       update_countries.country.getUnitAmount(data, function(valid, results) {
         if(valid) {
           console.log(results);
-          io.emit("country_unit_get_res", results);
+          socket.emit("country_unit_get_res", results);
         } else {
           console.log("Błąd");
         }
@@ -90,8 +94,15 @@ io.on('connection', function (socket) {
       });
     });
     socket.on('player_showCountries', function(data){
+      update_countries.country.show(data, function(valid, results) {
+        if(valid) {
+          console.log(results);
+          io.emit("player_showCountries_res", results);
+        } else {
+          console.log("Błąd");
+        }
 
-
+      });
     });
 
 });

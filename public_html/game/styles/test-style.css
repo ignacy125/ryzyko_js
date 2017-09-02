@@ -1,0 +1,31 @@
+body, html {
+
+  margin: 0;
+  padding: 0;
+}
+.page-container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  height: 100%;
+}
+.row {
+
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.col-md-1 {
+  height: 100%;
+}
+.com-md-11 {
+  height: 100%;
+  width: 100%;
+}
+.no-padding {
+  padding-left: 0;
+  padding-right: 0;
+}
+.img-responsive {
+
+}
