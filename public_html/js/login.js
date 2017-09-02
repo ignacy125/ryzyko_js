@@ -1,5 +1,5 @@
 socket = io('/logon');
-var socket = io.connect('http://localhost:80');
+// var socket = io.connect('http://localhost:80');
 
 function updateValues() {
   socket.emit("hello", "world");
@@ -19,7 +19,7 @@ socket.on('login_response', function(data){
   if(data != "login_fail"){
   //alert("Logowanie poprawne, witaj " + data);
   console.log("Logowanie poprawne");
-   window.location.replace("http://localhost:80/game");
+   window.location.replace("/game");
   } else {
     alert("Logowanie niepoprawne");
   }
