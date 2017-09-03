@@ -1,3 +1,6 @@
+$(document).ready(function(){
+
+
 socket = io('/game');
 // var socket = io.connect('http://localhost:80');
 
@@ -17,4 +20,5 @@ socket.on('country_unit_add_res', function(data){
 socket.on("player_showCountries_res", function(data){
 
   console.log(data);
+});
 });
