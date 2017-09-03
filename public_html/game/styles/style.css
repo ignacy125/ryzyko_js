@@ -17,6 +17,9 @@ body, html {
 .game_info-units_amount_title {
   display: none;
 }
+.game_info_reset {
+  display: none;
+}
 #game-map-img {
   width: 100%;
   height: 100%;

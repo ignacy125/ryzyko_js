@@ -10,7 +10,7 @@ var database = require('./modules/database-connect');
 var fetch_data = require('./modules/fetch-data');
 var update_countries = require('./modules/update_countries');
 //var getUnitAmount = require('./modules/get-unit-amount');
-var port = 8080;
+var port = 80;
 
 //var hashed_password = sha1(password);
 
@@ -105,6 +105,17 @@ io
 
             });
         });
+        socket.on('country_unit_reset', function(data){
+          update_countries.country.resetUnitAmount(data, function (valid) {
+              if (valid) {
+                  console.log("Zresetowano ilość jednostek w kraju: " + data.selected_country);
+                  socket.emit("country_unit_reset_res", data.selected_country);
+              } else {
+                  console.log("Błąd");
+              }
+
+          });
+        });
         socket.on('player_showCountries', function(data){
           update_countries.country.show(data, function(valid, results) {
             if(valid) {
@@ -117,11 +128,11 @@ io
         });
     });
 
-// setInterval(function () {
+ setInterval(function () {
 //     for (var i in SOCKETS_LIST) {
 //         socket = SOCKETS_LIST[i];
 //         socket.emit("server_msg", {
 //             msg: "server_hello: " + i,
 //         });
 //     }
-// }, 1000);
+}, 1000);

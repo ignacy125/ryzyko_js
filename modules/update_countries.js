@@ -53,7 +53,24 @@ var country = {
           }
      });
     connection.end();
+  },
+  resetUnitAmount: function(data, callback) {
+    connection = database.connect();
+    var query = 'UPDATE Countries ';
+    query += 'SET Units_amount = 0 ';
+    query += 'WHERE Name = ' + connection.escape(data.selected_country);
+    connection.query(query,
+      function (error, results, fields) {
+        if (error) {
+          console.log(error);
+          callback(false);
+        } else {
+          callback(true, data);
+        }
+   });
+  connection.end();
   }
+
 
 
 }

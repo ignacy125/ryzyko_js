@@ -7,7 +7,7 @@ $(document).ready(function(){
   var all_countries;
 
 
-  // Ukrycie tektsu o lokowaniu jednostki, gdy user klika na inny element
+  // Ukrycie tektsu o lokowaniu jednostki, gdy user klika lub najeżdza na inny element
   $('html').on('mouseover', function(){
     $('.game_info-units_amount').hide();
     $('.game_info-units_amount_title').hide();
@@ -30,6 +30,13 @@ $(document).ready(function(){
     event.stopPropagation();
     selected_country = $(this).attr('data-title');
     country.unit.get(selected_country);
+  });
+
+  // Reset jednostek w kraju
+  $(document).on("contextmenu", "#game-map area", function(event){
+    event.preventDefault();
+    selected_country = $(this).attr('data-title');
+    country.unit.reset(selected_country);
   });
 
 

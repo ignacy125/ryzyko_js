@@ -1,8 +1,8 @@
 $(document).ready(function(){
 
-
+var newLog = '<span class="console-log">';
+var newLogEnd = '</span><br>';
 socket = io('/game');
-// var socket = io.connect('http://localhost:80');
 
 // Odpowiedź serwera na informacje o ilości jednostek w kraju
 socket.on("country_unit_get_res", function(data){
@@ -17,8 +17,7 @@ socket.on('country_unit_add_res', function(data){
     $('.game_info_text-log').html('Unit' + ' (' + data.unit_amount + ') was located to: ' + '<kbd>' + data.selected_country + '</kbd>');
 });
 
-socket.on("player_showCountries_res", function(data){
-
-  console.log(data);
+socket.on("country_unit_reset_res", function(data){
+    $('.game_info-console').append(newLog + 'Zresetowano ilość jednostek w kraju: ' + data + newLogEnd);
 });
 });

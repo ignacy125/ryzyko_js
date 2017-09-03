@@ -32,6 +32,13 @@ var country = {
       socket.emit("country_unit_get", {
         "selected_country": country_name,
       });
+    },
+
+    reset: function(country_name) {
+      socket.emit("country_unit_reset", {
+        "selected_country": country_name,
+      });
     }
+
   }
 };
