@@ -11,7 +11,7 @@ socket.on("country_unit_get_res", function(data){
 
 // Odpowiedź serwera na dodanie jednostki
 socket.on('country_unit_add_res', function(data){
-    $('.game_info_text-log').html('Unit' + ' (' + data + ') was located to: ' + '<kbd>' + selected_country + '</kbd>');
+    $('.game_info_text-log').html('Unit' + ' (' + data.unit_amount + ') was located to: ' + '<kbd>' + data.selected_country + '</kbd>');
 });
 
 socket.on("player_showCountries_res", function(data){
