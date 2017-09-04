@@ -30,7 +30,7 @@ $(document).ready(function(){
         country.unit.add(selected_country, 1);
       });
       // Reset ilości jednostek
-
+      $('.btn-reset').show();
       $('.btn-reset').click(function(){
         country.unit.reset(selected_country);
       });
