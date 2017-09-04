@@ -9,8 +9,7 @@ $(document).ready(function(){
 
   // Ukrycie tektsu o lokowaniu jednostki, gdy user klika lub najeżdza na inny element
   $('html').on('mouseover', function(){
-    $('.game_info-units_amount').hide();
-    $('.game_info-units_amount_title').hide();
+
   });
   $('html').on('click', function(){
     $('.game_info-units_amount').hide();
@@ -21,8 +20,17 @@ $(document).ready(function(){
   $('#game-map area').click(function(event) {
       event.preventDefault();
       selected_country = $(this).attr('data-title');
-      console.log(selected_country);
-      country.unit.add(selected_country, 1);
+      $('.game_info-console').html("Selected country: " + selected_country);
+      country.unit.get(selected_country);
+      $('.btn-add').show();
+      $('.btn-add').click(function(){
+        country.unit.add(selected_country, 1);
+      });
+      // Reset ilości jednostek
+      $('.btn-reset').show();
+      $('.btn-reset').click(function(){
+        country.unit.reset(selected_country);
+      });
   });
 
   // Pobranie informacji o ilości jednostek w kraju
@@ -30,13 +38,6 @@ $(document).ready(function(){
     event.stopPropagation();
     selected_country = $(this).attr('data-title');
     country.unit.get(selected_country);
-  });
-
-  // Reset jednostek w kraju
-  $(document).on("contextmenu", "#game-map area", function(event){
-    event.preventDefault();
-    selected_country = $(this).attr('data-title');
-    country.unit.reset(selected_country);
   });
 
 

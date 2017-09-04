@@ -14,11 +14,11 @@ body, html {
   padding: 0;
   height: 100%;
 }
-.game_info-units_amount_title {
+.btn-add, .btn-reset {
   display: none;
 }
-.game_info_reset {
-  display: none;
+.game-info-btn {
+  margin-top: 10px;
 }
 #game-map-img {
   width: 100%;

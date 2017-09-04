@@ -15,6 +15,9 @@ var player = {
 
 
     });
+  },
+  createLog: function createLog(content, data) {
+    $('.game_info-console').html('<span class="console-log"> ' + content + data + "</span><br>");
   }
 };
 
