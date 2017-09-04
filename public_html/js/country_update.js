@@ -14,11 +14,14 @@ $(document).ready(function(){
   $('html').on('click', function(){
     $('.game_info-units_amount').hide();
     $('.game_info-units_amount_title').hide();
+    $('.game_info_text:nth-child(2)').hide();
+    $('.game_info_btn_wrapper').hide();
   });
 
   // Dodanie jednostki(ek) do kraju
   $('#game-map area').click(function(event) {
       event.preventDefault();
+      event.stopPropagation();
       selected_country = $(this).attr('data-title');
       $('.game_info-console').html("Selected country: " + selected_country);
       country.unit.get(selected_country);
@@ -36,6 +39,8 @@ $(document).ready(function(){
   // Pobranie informacji o ilości jednostek w kraju
   $('#game-map area').on('mouseover', function(event){
     event.stopPropagation();
+      $('.game_info_text:nth-child(2)').show();
+      $('.game_info_btn_wrapper').show();
     selected_country = $(this).attr('data-title');
     country.unit.get(selected_country);
   });

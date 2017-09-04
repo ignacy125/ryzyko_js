@@ -20,6 +20,9 @@ body, html {
 .game-info-btn {
   margin-top: 10px;
 }
+.game_info-units_amount_title {
+  display: none;
+}
 #game-map-img {
   width: 100%;
   height: 100%;
