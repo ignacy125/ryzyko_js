@@ -1,31 +1,48 @@
+/* Main Style */
 body, html {
-
+  width: 100%;
+  height:100%;
   margin: 0;
   padding: 0;
 }
-.page-container {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-  height: 100%;
+.container-fluid {
+  padding: 0;
+  margin: 0 auto;
 }
-.row {
 
-  margin-right: -15px;
-  margin-left: -15px;
-}
-.col-md-1 {
+/* Game wrapper */
+#game-wrapper {
+  width: 88%;
+  margin: 0 auto;
+  padding: 0;
   height: 100%;
 }
-.com-md-11 {
+#game-map-img {
+  width: 100%;
   height: 100%;
+  margin: auto;
+  display: block;
+}
+
+/* Left wrapper */
+.game-wrapper-left {
+  position: absolute;
+  float: left;
+  background-image: url('../images/col-bg.jpg');
+  height: 100%;
+  width: 140px;
+  z-index: 1;
+}
+.block__console-text {
+  color: white;
+  text-align: center;
+  line-height: 30px;
   width: 100%;
 }
-.no-padding {
-  padding-left: 0;
-  padding-right: 0;
+.hid-btn {
+  display: none;
+  width: 100%;
 }
-.img-responsive {
-
+.btn-add, .btn-reset {
+  margin-top: 10px;
 }

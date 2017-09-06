@@ -18,7 +18,7 @@ socket.on('login_response', function(data){
   if(data != "login_fail"){
   //alert("Logowanie poprawne, witaj " + data);
   console.log("Logowanie poprawne");
-   window.location.replace("/game");
+   window.location.replace("/game/"+data);
   } else {
     alert("Logowanie niepoprawne");
   }

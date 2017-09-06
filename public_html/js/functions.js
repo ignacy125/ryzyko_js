@@ -17,6 +17,9 @@ var player = {
     });
   },
   createLog: function createLog(content, data) {
+    if(typeof data === 'undefined'){
+      data = 'default';
+    }
     $('.game_info-console').html('<span class="console-log"> ' + content + data + "</span><br>");
   }
 };

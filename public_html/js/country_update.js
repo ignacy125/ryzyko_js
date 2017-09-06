@@ -25,10 +25,11 @@ $(document).ready(function(){
       selected_country = $(this).attr('data-title');
       $('.game_info-console').html("Selected country: " + selected_country);
       country.unit.get(selected_country);
-      $('.btn-add').show();
-      $('.btn-add').click(function(){
-        country.unit.add(selected_country, 1);
-      });
+      // $('.btn-add').show();
+      // $('.btn-add').click(function(){
+      //   country.unit.add(selected_country, 1);
+      // });
+      country.unit.add(selected_country, 1);
       // Reset ilości jednostek
       $('.btn-reset').show();
       $('.btn-reset').click(function(){
@@ -36,13 +37,19 @@ $(document).ready(function(){
       });
   });
 
+  $('#game-map area').contextmenu(function(event){
+    event.preventDefault();
+    event.stopPropagation();
+    country.unit.add(selected_country, -1);
+  });
+
   // Pobranie informacji o ilości jednostek w kraju
   $('#game-map area').on('mouseover', function(event){
     event.stopPropagation();
       $('.game_info_text:nth-child(2)').show();
       $('.game_info_btn_wrapper').show();
-    selected_country = $(this).attr('data-title');
-    country.unit.get(selected_country);
+      selected_country = $(this).attr('data-title');
+      country.unit.get(selected_country);
   });
 
 
