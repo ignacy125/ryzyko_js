@@ -9,9 +9,7 @@ var database = require('./modules/database-connect');
 var fetch_data = require('./modules/fetch-data');
 var update_countries = require('./modules/update_countries');
 var port = 80;
-// var userID;
 USERS_LIST = {}
-// app.locals.userID = 42;
 
 //app.use(express.static(__dirname)); // Current directory is root
 app.use('/', express.static(__dirname + '/public_html')); //  "public" off of current is root
@@ -28,10 +26,9 @@ app.get('/', function (req, res) {
 app.get('/game/:userID', function (req, res) {
   USERS_LIST[0] = req.params.userID;
   fs.readFile(__dirname +"/public_html/game/index.html", function (err, data){
-    console.log("userID " +userID);
-      res.writeHead(200,{'Content-Type': 'text/html'});
-      res.write(data);
-      res.end();
+  res.writeHead(200,{'Content-Type': 'text/html'});
+  res.write(data);
+  res.end();
 
 });
 
@@ -53,7 +50,8 @@ var logon_socket = require("./modules/logon-socket");
 var game_socket = require('./modules/game-socket');
 logon_socket.user.logon(io);
 console.log(USERS_LIST);
-game_socket.game_handler(io, USERS_LIST);
+game_socket.game_handler(io);
+// game_socket.turn_handler();
 
 
  setInterval(function () {

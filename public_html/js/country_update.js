@@ -6,6 +6,7 @@ $(document).ready(function(){
   var selected_country;
   var all_countries;
 
+  
 
   // Ukrycie tektsu o lokowaniu jednostki, gdy user klika lub najeżdza na inny element
   $('html').on('mouseover', function(){
@@ -35,6 +36,20 @@ $(document).ready(function(){
       $('.btn-reset').click(function(){
         country.unit.reset(selected_country);
       });
+      $('.btn-relocate').show();
+
+  });
+
+  $('.btn-relocate').click(function(){
+    alert("Wybierz kraj do, ktrórego chcesz dyslokować jednostki");
+    $('#game-map area').click(function(){
+      socket.emit("country_unit_relocate", {
+          "selected_country": selected_country
+      });
+      var countryAmount = prompt("Wprowadź ilość jednostek...");
+      country.unit.add(selected_country, countryAmount);
+
+    });
   });
 
   $('#game-map area').contextmenu(function(event){
@@ -44,8 +59,7 @@ $(document).ready(function(){
   });
 
   // Pobranie informacji o ilości jednostek w kraju
-  $('#game-map area').on('mouseover', function(event){
-    event.stopPropagation();
+  $('#game-map area').on('mouseover', function(){
       $('.game_info_text:nth-child(2)').show();
       $('.game_info_btn_wrapper').show();
       selected_country = $(this).attr('data-title');

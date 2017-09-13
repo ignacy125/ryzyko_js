@@ -4,6 +4,9 @@ body, html {
   margin: 0;
   padding: 0;
 }
+.overlay {
+pointer-events: none;
+}
 .container-fluid {
   padding: 0;
   margin: 0 auto;
@@ -14,11 +17,8 @@ body, html {
   padding: 0;
   height: 100%;
 }
-.btn-add, .btn-reset {
+.hid-btn {
   display: none;
-}
-.game-info-btn {
-  margin-top: 10px;
 }
 .game_info-units_amount_title {
   display: none;

@@ -11,10 +11,13 @@ function login() {
 
 var player = {
   nextTurn: function(){
+    var user_id = parseInt(document.URL[document.URL.length-1], 10);
+    console.log(user_id);
     socket.emit("player_nextTurn", {
-
+      "user_id": user_id
 
     });
+    $(".overlay").css("pointer-events", "none");
   },
   createLog: function createLog(content, data) {
     if(typeof data === 'undefined'){
@@ -45,6 +48,5 @@ var country = {
         "selected_country": country_name,
       });
     }
-
   }
 };

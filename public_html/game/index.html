@@ -13,7 +13,6 @@
 
 </head>
 <body>
-
 <div class="container-fluid">
 
   <div id="game_info_wrapper-1">
@@ -37,10 +36,14 @@
           </p>
           </div>
           <div class="game_info_btn_wrapper">
+
             <center>
-            <button class="btn game-info-btn btn-reset">Reset unit amount</button>
+            <button class="btn btn-turn-change" onClick="player.nextTurn()" >Koniec tury</button>
+            <button class="btn hid-btn btn-reset">Reset unit amount</button>
             <br />
-            <button class="btn game-info-btn btn-add">Deploy unit</button>
+            <button class="btn hid-btn btn-add">Deploy unit</button>
+            <br />
+            <button class="btn hid-btn btn-relocate">Relocate unit</button>
             </center>
           </div>
 
@@ -49,7 +52,7 @@
 
   </div>
 
-  <div id="game-wrapper">
+  <div id="game-wrapper" class="overlay">
     <img src="images/game-map.jpg" id="game-map-img" usemap="#game-map" >
     <map name="game-map" id="game-map">
       <area target="" alt="Alaska" data-title="Alaska" href="" coords="29,88,82,114" shape="rect" class="{fillColor:'00ff00'}">
@@ -108,8 +111,15 @@ $(document).ready(function(){
   document.getElementById('game-map-img').draggable = false;
   $('map').imageMapResize();
   $('#game-map-img').maphilight({
-      alwaysOn: true
+      alwaysOn: false,
+      neverOn: true
   });
+  $(document).click(function(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    return false;
+});
 
 });
 </script>

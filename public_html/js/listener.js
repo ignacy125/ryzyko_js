@@ -18,4 +18,10 @@ socket.on('country_unit_add_res', function(data){
 socket.on("country_unit_reset_res", function(data){
     player.createLog('Zresetowano ilość jednostek w kraju ', data);
 });
+
+socket.on("your_turn_msg", function(data){
+  console.log("Dziala");
+    $('.overlay').css("pointer-events", "auto");
+});
+
 });
