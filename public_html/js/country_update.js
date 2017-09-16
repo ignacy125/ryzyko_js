@@ -1,13 +1,38 @@
 $(document).ready(function(){
 
+
   // socket = io();
 
   var unit_amount_text;
   var selected_country;
-  var all_countries;
+  var game_area = $('#game-map area');
 
-  
+  $(game_area).click(function(event) {
+      event.preventDefault();
+      selected_country = $(this).attr('data-title');
+      player.createLog("Selected country: ", selected_country);
+      country.unit.get(selected_country);
+      country.unit.add(selected_country, 1);
+      // Reset ilości jednostek
+      $('.btn-reset').show();
+      $('.btn-reset').click(function(){
+        country.unit.reset(selected_country);
+      });
+      $('.btn-relocate').show();
+  });
 
+  $(game_area).on('mouseover', function(){
+      selected_country = $(this).attr('data-title');
+      country.unit.get(selected_country);
+  });
+
+  $('#game-map area').contextmenu(function(event){
+    event.preventDefault();
+    country.unit.add(selected_country, -1);
+  });
+
+
+  /*
   // Ukrycie tektsu o lokowaniu jednostki, gdy user klika lub najeżdza na inny element
   $('html').on('mouseover', function(){
 
@@ -76,5 +101,6 @@ $(document).ready(function(){
       "country": unit_locate_country_answer,
   });
 });
+*/
 
 });

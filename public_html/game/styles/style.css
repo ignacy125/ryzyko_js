@@ -20,14 +20,20 @@ pointer-events: none;
 .hid-btn {
   display: none;
 }
-.game_info-units_amount_title {
-  display: none;
+.btn-game {
+  margin-top: 30px;
 }
+
 #game-map-img {
   width: 100%;
   height: 100%;
   margin: auto;
   display: block;
+  -khtml-user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 #game_info_wrapper-1 {
 position: absolute;
