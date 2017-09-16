@@ -23,7 +23,7 @@ var action = {
       {action: action_name, data: data}
     );
     // action.count();
-    if(turn_data.actions.length <= actions_limit){
+    if(turn_data.actions.length >= actions_limit){
       alert("Koniec ruchów");
       $(".overlay").css("pointer-events", "none");
     }

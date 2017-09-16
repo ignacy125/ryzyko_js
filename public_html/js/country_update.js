@@ -31,6 +31,13 @@ $(document).ready(function(){
     country.unit.add(selected_country, -1);
   });
 
+  $('.btn-relocate').click(function(){
+    alert("Wybierz kraj z którego chcesz dyslokować jednostki");
+    $(game_area).click(function(){
+
+    })
+  });
+
 
   /*
   // Ukrycie tektsu o lokowaniu jednostki, gdy user klika lub najeżdza na inny element

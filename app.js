@@ -11,7 +11,6 @@ var update_countries = require('./modules/update_countries');
 var port = 80;
 USERS_LIST = {}
 
-//app.use(express.static(__dirname)); // Current directory is root
 app.use('/', express.static(__dirname + '/public_html')); //  "public" off of current is root
 server.listen(port);
 console.log("Working on port " + port);
@@ -31,7 +30,6 @@ app.get('/game/:userID', function (req, res) {
   res.end();
 
 });
-
 });
 
 function handler(req, res) {
@@ -51,7 +49,6 @@ logon_socket.user.logon(io);
 console.log(USERS_LIST);
 game_socket.game_handler(io);
 // game_socket.turn_handler();
-
 
  setInterval(function () {
 //     for (var i in SOCKETS_LIST) {

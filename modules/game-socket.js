@@ -69,10 +69,7 @@ var current_user;
               }
             });
           });
-
-
       });
-
 };
 
 function turn_handler() {
