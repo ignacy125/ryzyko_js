@@ -1,4 +1,5 @@
 <!doctype html>
+
 <html>
 <head>
     <title>Ryzyko</title>
@@ -26,9 +27,9 @@
             <span>Countries owned:<br /><code>#countries_amount#</code></span>
           </p>
           <p class="game_info_text">
-              <span class="game_info_text-log"> </span> <br />
+              <!-- <span class="game_info_text-log"> </span> <br />
               <span class="game_info-units_amount_title">Units Amount:</span>
-              <span class="game_info-units_amount"></span>
+              <span class="game_info-units_amount"></span> -->
               <br />
               <span class="game_info-console">
 
@@ -38,12 +39,11 @@
           <div class="game_info_btn_wrapper">
 
             <center>
-            <button class="btn btn-turn-change" onClick="player.nextTurn()" >Koniec tury</button>
-            <button class="btn hid-btn btn-reset">Reset unit amount</button>
-            <br />
-            <button class="btn hid-btn btn-add">Deploy unit</button>
-            <br />
-            <button class="btn hid-btn btn-relocate">Relocate unit</button>
+            <button class="btn btn-game btn-turn-change">Koniec tury</button>
+            <button class="btn overlay hid-btn btn-game btn-reset" >Reset unit amount</button>
+
+            <button class="btn overlay hid-btn btn-game btn-add">Deploy unit</button>
+            <button class="btn overlay hid-btn btn-game btn-relocate">Relocate unit</button>
             </center>
           </div>
 
@@ -55,7 +55,7 @@
   <div id="game-wrapper" class="overlay">
     <img src="images/game-map.jpg" id="game-map-img" usemap="#game-map" >
     <map name="game-map" id="game-map">
-      <area target="" alt="Alaska" data-title="Alaska" href="" coords="29,88,82,114" shape="rect" class="{fillColor:'00ff00'}">
+      <area id="alaska" target="" alt="Alaska" data-title="Alaska" href="" coords="29,88,82,114" shape="rect" class="{fillColor:'00ff00'}">
       <area target="" alt="North_west" data-title="North_west" href="" coords="91,84,227,108" shape="rect">
       <area target="" alt="Alberta" data-title="Alberta" href="" coords="114,144,170,163" shape="rect">
       <area target="" alt="Ontario" data-title="Ontario" href="" coords="183,163,234,177" shape="rect">
@@ -112,8 +112,8 @@ $(document).ready(function(){
   $('map').imageMapResize();
   $('#game-map-img').maphilight({
       alwaysOn: false,
-      neverOn: true
   });
+  $("#alaska").data('maphilight');
   $(document).click(function(e) {
     e.stopPropagation();
     e.preventDefault();
@@ -126,6 +126,7 @@ $(document).ready(function(){
 <script src="../js/listener.js"></script>
 <script src="../js/functions.js"></script>
 <script src="../js/country_update.js"></script>
+<script src="../js/action.js"></script>
 </body>
 
 </html>

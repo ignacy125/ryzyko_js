@@ -76,7 +76,7 @@ var current_user;
 };
 
 function turn_handler() {
-      current_user = current_user++ % Object.keys(USER_IDS).length+1;
+      current_user = current_user++ % Object.keys(USER_IDS).length + 1;
       if(current_user == 0){
         current_user++;
       }

@@ -9,6 +9,36 @@ function login() {
     })
 };
 
+var actions_limit =  1;
+
+turn_data = {
+  "actions": [
+
+  ]
+}
+
+var action = {
+  send: function(action_name, data){
+    turn_data.actions.push(
+      {action: action_name, data: data}
+    );
+    // action.count();
+    if(turn_data.actions.length <= actions_limit){
+      alert("Koniec ruchów");
+      $(".overlay").css("pointer-events", "none");
+    }
+
+  }
+  // count: function(){
+  //   if(action_counter == 0) {
+  //     alert("Koniec tury");
+  //     $(".overlay").css("pointer-events", "none");
+  //   }
+  //
+  //   return action_counter++;
+  // }
+}
+
 var player = {
   nextTurn: function(){
     var user_id = parseInt(document.URL[document.URL.length-1], 10);
@@ -24,14 +54,14 @@ var player = {
       data = 'default';
     }
     $('.game_info-console').html('<span class="console-log"> ' + content + data + "</span><br>");
-  }
+  },
 };
 
 var country = {
   unit: {
     add: function(country_name, amount) {
+      action.send("addUnit", amount)
       socket.emit("country_unit_add", {
-        //"selected_country": country_id,
         "selected_country": country_name,
         "unit_amount": amount,
     });
@@ -44,6 +74,7 @@ var country = {
     },
 
     reset: function(country_name) {
+      action.send("resetUnit", null);
       socket.emit("country_unit_reset", {
         "selected_country": country_name,
       });
