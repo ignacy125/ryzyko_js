@@ -3,6 +3,12 @@ $(document).ready(function(){
 
   // socket = io();
 
+  relocate_data = {
+    "from": null,
+    "to": null,
+    "unit_amount": null
+  };
+
   var unit_amount_text;
   var selected_country;
   var game_area = $('#game-map area');
@@ -31,11 +37,17 @@ $(document).ready(function(){
     country.unit.add(selected_country, -1);
   });
 
-  $('.btn-relocate').click(function(){
-    alert("Wybierz kraj z którego chcesz dyslokować jednostki");
-    $(game_area).click(function(){
 
-    })
+  $('.btn-relocate').click(function(e){
+      e.preventDefault();
+      relocate_data["from"] = selected_country;
+      alert("Wybierz kraj do którego chcesz dyslokować jednostki");
+      $(game_area).click(function(){
+        relocate_data["to"] = selected_country;
+        var unit_amount = prompt("Ile?");
+        relocate_data["unit_amount"] = unit_amount;
+        socket.emit("relocate_data_emit", relocate_data);
+      });
   });
 
 

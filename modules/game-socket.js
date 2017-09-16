@@ -69,6 +69,10 @@ var current_user;
               }
             });
           });
+
+          socket.on('relocate_data_emit', function(data){
+            
+          });
       });
 };
 

@@ -9,13 +9,13 @@ function login() {
     })
 };
 
-var actions_limit =  1;
+var actions_limit =  20;
 
 turn_data = {
   "actions": [
 
   ]
-}
+};
 
 var action = {
   send: function(action_name, data){
