@@ -46,7 +46,7 @@ var player = {
     if(typeof data === 'undefined'){
       data = 'default';
     }
-    $('.game_info-console').html('<span class="console-log"> ' + content + data + "</span><br>");
+    $('.console').html('<span class="console-log"> ' + content + data + "</span><br>");
   },
 };
 

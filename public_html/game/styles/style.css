@@ -48,6 +48,11 @@ text-align: center;
 line-height: 30px;
 width: 100%;
 }
+
+.unit-amount, .console {
+  display: block;
+}
+
 .game_info_icon-arrow {
   position: absolute;
   bottom: 0;
