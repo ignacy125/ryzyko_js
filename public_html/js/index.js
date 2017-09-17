@@ -57,4 +57,12 @@ $(document).ready(function(){
     player.nextTurn();
   });
 
+  // Konsola
+
+  $('.fa-times').click(function(event){
+    event.preventDefault();
+    $('.console').empty();
+    $(this).hide();
+  });
+
 });

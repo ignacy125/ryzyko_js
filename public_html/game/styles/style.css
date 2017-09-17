@@ -18,7 +18,7 @@ pointer-events: none;
 
 /* Left game sidebar */
 
-.left {
+.game-wrapper-left {
 position: absolute;
 float: left;
 background-image: url('../images/col-bg.jpg');
@@ -27,7 +27,7 @@ width: 140px;
 z-index: 1;
 }
 
-.game-header {
+.game-wrapper__header {
 float: left;
 color: white;
 text-align: center;
@@ -40,16 +40,30 @@ padding: 5px;
 }
 .btn-game {
   margin-top: 30px;
+  width: 100%;
+}
+.game-wrapper__buttons {
+  margin: 0 auto;
+  width: 75%;
 }
 
-.game-info-text {
+.game-wrapper__text {
 color: white;
 text-align: center;
 line-height: 30px;
 width: 100%;
 }
 
-.unit-amount, .console {
+.console {
+  margin-top: 10px;
+}
+
+.console-clear {
+  width: 75%;
+  margin: 0 auto;
+}
+
+.game-wrapper__units, .game-wrapper__console {
   display: block;
 }
 
@@ -65,7 +79,7 @@ width: 100%;
 
 /* Game map */
 
-.game-map-wrapper {
+.game-map {
   width: 88%;
   margin: 0 auto;
   padding: 0;

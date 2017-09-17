@@ -10,7 +10,7 @@ function login() {
 };
 
 // Limit akcji na daną fazę
-var actions_limit =  1;
+var actions_limit =  3;
 
 // Dane o akcjach do wysłania na serwer
 turn_data = {
@@ -47,6 +47,7 @@ var player = {
       data = 'default';
     }
     $('.console').html('<span class="console-log"> ' + content + data + "</span><br>");
+    $(".fa-times").show();
   },
 };
 
