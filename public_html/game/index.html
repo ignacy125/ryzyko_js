@@ -16,17 +16,16 @@
 <body>
 <div class="container-fluid">
 
-  <div id="game_info_wrapper-1">
-      <h4 class="game_info_header"><code>#user_name#'s</code><br /> turn</h3>
-      <div class="game_info_el">
-          <p class="game_info_text">
+  <div class="game-wrapper left">
+      <h4 class="game-header"><code>#user_name#'s</code><br /> turn</h3>
+          <!-- <p class="game_info_text">
             <span>Units to deploy: <code>#units_amount#</code></span>
             <span>Stage:<br /><code>#stage_number#</code></span>
             <span>Turn: <br /><code>#turn_number#</code></span><br />
             <span>Your color:<br /><code>#color_name#</code></span>
             <span>Countries owned:<br /><code>#countries_amount#</code></span>
-          </p>
-          <p class="game_info_text">
+          </p> -->
+          <p class="game-info-text">
               <!-- <span class="game_info_text-log"> </span> <br />
               <span class="game_info-units_amount_title">Units Amount:</span>
               <span class="game_info-units_amount"></span> -->
@@ -35,24 +34,19 @@
 
               </span>
           </p>
-          </div>
           <div class="game_info_btn_wrapper">
 
             <center>
             <button class="btn btn-game btn-turn-change">Koniec tury</button>
             <button class="btn overlay hid-btn btn-game btn-reset" >Reset unit amount</button>
-
             <button class="btn overlay hid-btn btn-game btn-add">Deploy unit</button>
             <button class="btn overlay hid-btn btn-game btn-relocate">Relocate unit</button>
             </center>
           </div>
 
-
-
-
   </div>
 
-  <div id="game-wrapper" class="overlay">
+  <div class="game-wrapper game-map-wrapper overlay">
     <img src="images/game-map.jpg" id="game-map-img" usemap="#game-map" >
     <map name="game-map" id="game-map">
       <area id="alaska" target="" alt="Alaska" data-title="Alaska" href="" coords="29,88,82,114" shape="rect" class="{fillColor:'00ff00'}">
@@ -100,8 +94,6 @@
     </map>
   </div>
 
-
-
 </div>
 
 
@@ -113,20 +105,17 @@ $(document).ready(function(){
   $('#game-map-img').maphilight({
       alwaysOn: false,
   });
-  $("#alaska").data('maphilight');
-  $(document).click(function(e) {
-    e.stopPropagation();
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    return false;
-});
 
+  $('<p>').appendTo('.game-map-wrapper').text('MERCURY').css({
+    position:'absolute',
+    top:'100px',
+    left:'20%'
+  });
 });
 </script>
 <script src="../js/listener.js"></script>
 <script src="../js/functions.js"></script>
-<script src="../js/country_update.js"></script>
-<script src="../js/action.js"></script>
+<script src="../js/index.js"></script>
 </body>
 
 </html>

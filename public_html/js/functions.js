@@ -9,8 +9,10 @@ function login() {
     })
 };
 
+// Limit akcji na daną fazę
 var actions_limit =  20;
 
+// Dane o akcjach do wysłania na serwer
 turn_data = {
   "actions": [
 
@@ -27,16 +29,7 @@ var action = {
       alert("Koniec ruchów");
       $(".overlay").css("pointer-events", "none");
     }
-
   }
-  // count: function(){
-  //   if(action_counter == 0) {
-  //     alert("Koniec tury");
-  //     $(".overlay").css("pointer-events", "none");
-  //   }
-  //
-  //   return action_counter++;
-  // }
 }
 
 var player = {
