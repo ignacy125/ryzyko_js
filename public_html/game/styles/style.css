@@ -42,6 +42,7 @@ padding: 5px;
   margin-top: 30px;
   width: 100%;
 }
+
 .game-wrapper__buttons {
   margin: 0 auto;
   width: 75%;
@@ -58,13 +59,12 @@ width: 100%;
   margin-top: 10px;
 }
 
-.console-clear {
-  width: 75%;
-  margin: 0 auto;
-}
-
 .game-wrapper__units, .game-wrapper__console {
   display: block;
+}
+
+.fa-times {
+  cursor: pointer;
 }
 
 .game_info_icon-arrow {

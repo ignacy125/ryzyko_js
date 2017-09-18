@@ -10,7 +10,7 @@ function login() {
 };
 
 // Limit akcji na daną fazę
-var actions_limit =  3;
+var actions_limit =  999;
 
 // Dane o akcjach do wysłania na serwer
 turn_data = {

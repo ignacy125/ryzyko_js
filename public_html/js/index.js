@@ -16,12 +16,14 @@ $(document).ready(function(){
         country.unit.reset(selected_country);
       });
       $('.btn-relocate').show();
+
   });
 
   // Pobranie ilości jednostek
   $(game_area).on('mouseover', function(){
       selected_country = $(this).attr('data-title');
       country.unit.get(selected_country);
+
   });
 
   // Usunięcie jednostki
