@@ -4,14 +4,14 @@ socket = io('/game');
 
 // Odpowiedź na informacje o ilości jednostek w kraju
 socket.on("country_unit_get_res", function(data){
-  $('.game-wrapper__units').html('Units amount: <kbd>' + data["Units_amount"] + '</kbd>');
-  var newTitle = data["Units_amount"];
-  var country = data.selected_country;
-  $("#alaska").tooltipster({
-      content: data["Units_amount"],
+  var units_amount = data.result["Units_amount"];
+  var country = data.country;
+  $('.tool-tip').tooltipster({
+      content: units_amount,
       multiple: true,
       side: 'top'
-});
+    });
+  $('.game-wrapper__units').html('Units amount: <kbd>' + units_amount + '</kbd>');
 });
 
 // Odpowiedź na dodanie jednostki

@@ -40,6 +40,7 @@ var country = {
       connection = database.connect();
       var query = 'SELECT Units_amount FROM Countries ';
       query += 'WHERE Name = ' + connection.escape(data.selected_country);
+      var sel_country = data.selected_country;
       connection.query(query,
         function (error, results, fields) {
           if (error) {
@@ -47,7 +48,7 @@ var country = {
             callback(false);
           }
           if (results.length > 0) {
-            callback(true, results[0]);
+            callback(true, results[0], sel_country);
           } else {
             callback(false);
           }

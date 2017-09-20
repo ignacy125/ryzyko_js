@@ -36,10 +36,14 @@ var current_user;
           });
 
           socket.on('country_unit_get', function (data) {
-              update_countries.country.getUnitAmount(data, function (valid, results) {
+              update_countries.country.getUnitAmount(data, function (valid, results, sel_country) {
                   if (valid) {
                       console.log(results);
-                      socket.emit("country_unit_get_res", results);
+                      console.log(sel_country);
+                      socket.emit("country_unit_get_res", {
+                        result: results,
+                        country: sel_country
+                      });
                   } else {
                       console.log("Błąd");
                   }

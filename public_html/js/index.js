@@ -16,6 +16,7 @@ $(document).ready(function(){
         country.unit.reset(selected_country);
       });
       $('.btn-relocate').show();
+      $('.north_west').tooltipster('open');
 
   });
 
