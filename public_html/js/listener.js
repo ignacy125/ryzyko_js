@@ -6,12 +6,24 @@ socket = io('/game');
 socket.on("country_unit_get_res", function(data){
   var units_amount = data.result["Units_amount"];
   var country = data.country;
-  $('.tool-tip').tooltipster({
+  //FIXME Wyświetlanie od razu po najechaniu myszką
+
+  $('area[data-title="' + country + '"]').tooltipster({
       content: units_amount,
       multiple: true,
       side: 'top'
     });
+    
+
+  // LUB:
+  // $('.tool-tip').tooltipster({
+  //     content: units_amount,
+  //     multiple: true,
+  //     side: 'top'
+  //   });
+
   $('.game-wrapper__units').html('Units amount: <kbd>' + units_amount + '</kbd>');
+
 });
 
 // Odpowiedź na dodanie jednostki
@@ -28,6 +40,7 @@ socket.on("country_unit_reset_res", function(data){
 socket.on("your_turn_msg", function(data){
   console.log("Dziala");
   $('.overlay').css("pointer-events", "auto");
+
 });
 
 });

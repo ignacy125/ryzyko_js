@@ -4,6 +4,14 @@ $(document).ready(function(){
   var selected_country;
   var game_area = $('#game-map area');
 
+  $( "area" ).each(function( index, element ) {
+    var area_attr = $(element).attr("data-title");
+    country.unit.get(area_attr);
+    
+  });
+
+
+
   $(game_area).click(function(event) {
       event.preventDefault();
       selected_country = $(this).attr('data-title');
@@ -16,7 +24,6 @@ $(document).ready(function(){
         country.unit.reset(selected_country);
       });
       $('.btn-relocate').show();
-      $('.north_west').tooltipster('open');
 
   });
 

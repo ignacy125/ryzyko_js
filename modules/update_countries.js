@@ -70,23 +70,28 @@ var country = {
         }
    });
   connection.end();
-  }
-  /*relocateUnit: function(data, callback){
+  },
+  checkRelocation: function(data, callback){
     connection = database.connect();
     var query = 'SELECT Units_amount FROM Countries ';
     query += 'WHERE Name = ' + connection.escape(data.from);
-    query += 'AND Name = ' + connection.escape(data.selected_country);
+    query += 'AND Adjacent LIKE ' + connection.escape("%"+data.to+"%");
     connection.query(query,
       function (error, results, fields) {
         if (error) {
           console.log(error);
+          console.log("Błąd 1");
           callback(false);
+        }
+        if (results.length > 0) {
+          callback(true, results[0]);
         } else {
-          callback(true, data);
+          console.log("Błąd 2");
+          callback(false);
         }
    });
   connection.end();
-} */
+}
 
 
 

@@ -19,6 +19,8 @@
     <script type="text/javascript" src="libs/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
     <script>
     $(document).ready(function(){
+      $('.tool-tip').tooltipster('open');
+
     });
     </script>
 </head>
@@ -62,11 +64,11 @@
   <div class="game-map overlay">
     <img src="images/game-map.jpg" id="game-map-img" usemap="#game-map" >
     <map name="game-map" id="game-map">
-      <area target="" alt="Alaska" data-title="Alaska" href="" coords="29,88,82,114" shape="rect" class="tool-tip" id="alaska">
-      <area target="" alt="North_west" data-title="North_west" href="" coords="91,84,227,108" shape="rect" class="tool-tip north_west">
-      <area target="" alt="Alberta" data-title="Alberta" href="" coords="114,144,170,163" shape="rect" class="tool-tip">
-      <area target="" alt="Ontario" data-title="Ontario" href="" coords="183,163,234,177" shape="rect" class="tool-tip">
-      <area target="" alt="Western_usa" data-title="Western_usa" href="" coords="112,211,190,237" shape="rect" class="tool-tip">
+      <area target="" alt="Alaska" data-title="Alaska" href="" coords="29,88,82,114" shape="rect" class="tool-tip Alaska" id="alaska">
+      <area target="" alt="North_west" data-title="North_west" href="" coords="91,84,227,108" shape="rect" class="tool-tip North_west">
+      <area target="" alt="Alberta" data-title="Alberta" href="" coords="114,144,170,163" shape="rect" class="tool-tip Alberta">
+      <area target="" alt="Ontario" data-title="Ontario" href="" coords="183,163,234,177" shape="rect" class="tool-tip Ontario">
+      <area target="" alt="Western_usa" data-title="Western_usa" href="" coords="112,211,190,237" shape="rect" class="tool-tip Western_usa">
       <area target="" alt="Eastern_usa" data-title="Eastern_usa" href="" coords="180,250,253,271" shape="rect" class="tool-tip">
       <area target="" alt="Central_america" data-title="Central_america" href="" coords="128,286,168,371,191,361,144,282" shape="poly" class="tool-tip">
       <area target="" alt="Quebec" data-title="Quebec" href="" coords="256,163,306,176" shape="rect" class="tool-tip">
@@ -79,7 +81,7 @@
       <area target="" alt="North_africa" data-title="North_africa" href="" coords="419,423,515,443" shape="rect" class="tool-tip">
       <area target="" alt="Egypt" data-title="Egypt" href="" coords="519,387,558,406" shape="rect" class="tool-tip">
       <area target="" alt="East_africa" data-title="East_africa" href="" coords="624,459,565,490" shape="rect" class="tool-tip">
-      <area target="" alt="Congo" title="Congo" href="" coords="510,505,562,522" shape="rect" class="tool-tip">
+      <area target="" alt="Congo"  href="" coords="510,505,562,522" shape="rect" class="tool-tip">
       <area target="" alt="South_africa" data-title="South_africa" href="" coords="518,583,569,616" shape="rect" class="tool-tip">
       <area target="" alt="Iceland" data-title="Iceland" href="" coords="400,122,453,138" shape="rect" class="tool-tip">
       <area target="" alt="Great_britain" data-title="Great_britain" href="" coords="347,199,447,219" shape="rect" class="tool-tip">
@@ -118,12 +120,8 @@ $(document).ready(function(){
   $('#game-map-img').maphilight({
       alwaysOn: false,
   });
+  $('.tool-tip').tooltipster();
 
-  $('<p>').appendTo('.game-map-wrapper').text('MERCURY').css({
-    position:'absolute',
-    top:'100px',
-    left:'20%'
-  });
 });
 </script>
 <script src="../js/listener.js"></script>

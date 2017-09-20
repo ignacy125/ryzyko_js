@@ -38,8 +38,8 @@ var current_user;
           socket.on('country_unit_get', function (data) {
               update_countries.country.getUnitAmount(data, function (valid, results, sel_country) {
                   if (valid) {
-                      console.log(results);
-                      console.log(sel_country);
+                      // console.log(results);
+                      // console.log(sel_country);
                       socket.emit("country_unit_get_res", {
                         result: results,
                         country: sel_country
@@ -75,7 +75,44 @@ var current_user;
           });
 
           socket.on('relocate_data_emit', function(data){
+            update_countries.country.checkRelocation(data, function(valid, results) {
+              if(valid) {
+                console.log(results);
+                dbres = parseInt(results.Units_amount, 10);
+                res = parseInt(data.unit_amount, 10);
+                console.log(dbres, res, results.Units_amount);
+                if( dbres > res) {
+                  console.log('dziala 123')
+                  newData = {
+                    "selected_country" : data.from,
+                    "unit_amount" : -data.unit_amount
+                  }
+                  console.log(newData);
+                  update_countries.country.addUnit(newData, function(valid) {
+                    if(valid) {
+                      console.log(valid);
+                    } else {
+                      console.log("Błąd");
+                    }
 
+                  });
+                  newData.unit_amount = data.unit_amount
+                  newData.selected_country = data.to
+                  console.log(newData)
+                  update_countries.country.addUnit(newData, function(valid) {
+                    if(valid) {
+                      console.log(valid);
+                    } else {
+                      console.log("Błąd");
+                    }
+                  });
+
+
+                }
+              } else {
+                console.log("Błąd");
+              }
+            });
           });
       });
 };
