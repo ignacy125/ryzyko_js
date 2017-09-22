@@ -3,21 +3,23 @@ $(document).ready(function(){
   var unit_amount_text;
   var selected_country;
   var game_area = $('#game-map area');
+  var current_user = 2; // Test
 
   $( "area" ).each(function( index, element ) {
     var area_attr = $(element).attr("data-title");
+    // console.log(area_attr);
     // country.unit.get(area_attr);
   });
 
   // Zaznaczenie krajów użytkownika
-  country.hilight(2);
+  country.hilight(current_user);
 
   $(game_area).click(function(event) {
       event.preventDefault();
       selected_country = $(this).attr('data-title');
       player.createLog("Selected country: ", selected_country);
       country.unit.get(selected_country);
-      country.unit.add(selected_country, 1);
+      country.unit.add(selected_country, 1, current_user);
       // Reset ilości jednostek
       $('.btn-game').show();
       $('.btn-reset').click(function(){
@@ -34,7 +36,7 @@ $(document).ready(function(){
   // Usunięcie jednostki
   $(game_area).contextmenu(function(event){
     event.preventDefault();
-    country.unit.add(selected_country, -1);
+    country.unit.add(selected_country, -1, current_user);
   });
 
   // Informacje o dyslokacji jednostek

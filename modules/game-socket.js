@@ -39,13 +39,14 @@ var current_user;
               update_countries.country.getUnitAmount(data, function (valid, results, sel_country) {
                   if (valid) {
                       // console.log(results);
-                      // console.log(sel_country);
+                      console.log(results);
+                      console.log(sel_country);
                       socket.emit("country_unit_get_res", {
                         result: results,
                         country: sel_country
                       });
                   } else {
-                      console.log("Błąd");
+                      console.log("Błąd unit get");
                   }
 
               });
@@ -116,7 +117,7 @@ var current_user;
           socket.on("country_hilight", function(data){
             update_countries.country.hilight(data, function(valid, results) {
               if(valid) {
-                console.log("Hiligth działa", results);
+                console.log("Hiligthed countries: \n", results);
                 socket.emit("country_hilight_res", results)
               } else {
                 console.log("Błąd");

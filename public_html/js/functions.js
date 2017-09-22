@@ -60,11 +60,12 @@ var country = {
   },
 
   unit: {
-    add: function(country_name, amount) {
+    add: function(country_name, amount, user) {
       action.send("addUnit", amount)
       socket.emit("country_unit_add", {
         "selected_country": country_name,
         "unit_amount": amount,
+        "user_id": user
     });
   },
 

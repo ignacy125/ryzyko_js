@@ -48,10 +48,10 @@ socket.on("country_hilight_res", function(data){
     } else if (user_color == 'blue'){
       user_color = '0099ff';
     };
-
-    $('area[data-title="' + countries + '"]').data("maphilight", { fillColor: user_color, fillOpacity: 0.2, stroke: true });
+    $('area[data-title="' + countries + '"]').data("maphilight", { fillColor: user_color, fillOpacity: 0.3, stroke: false });
   };
 
+  // Wyróżnienie krajów bez jednostek domyślnie jest wyłączone
   $('#game-map-img').maphilight({
     alwaysOn: true,
     fillColor: 'ffffff',
