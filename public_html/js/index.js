@@ -31,6 +31,7 @@ $(document).ready(function(){
   $(game_area).on('mouseover', function(){
       selected_country = $(this).attr('data-title');
       country.unit.get(selected_country);
+
   });
 
   // Usunięcie jednostki

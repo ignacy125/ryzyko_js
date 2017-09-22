@@ -81,7 +81,8 @@ var country = {
     connection = database.connect();
     var query = 'SELECT Name, Color FROM Countries, Users ';
     query += 'WHERE User_ID = ' + connection.escape(data.user_id) + ' ';
-    query += 'AND Player_ID = ' + connection.escape(data.user_id);
+    query += 'AND Player_ID = ' + connection.escape(data.user_id); + ' ';
+    // query += 'AND IF(Player_ID NOT' + connection.escape(data.user_id) + '1, 0) = 0 ';
     connection.query(query,
       function (error, results, fields) {
         if (error) {

@@ -6,11 +6,15 @@ socket = io('/game');
 socket.on("country_unit_get_res", function(data){
   var units_amount = data.result["Units_amount"];
   var country = data.country;
+  var unit_img = '<img src="images/unit-icon-2.png" class="unit-icon">';
+  var units_tooltip = unit_img + '<h4 style="float: right">' + units_amount + "</h4>";
 
   $('area[data-title="' + country + '"]').tooltipster({
-      content: units_amount,
+      contentAsHTML: true,
+      content: units_tooltip,
       multiple: true,
-      side: 'top'
+      side: 'top',
+      theme: 'tooltipster-borderless'
     });
 
   // $('.game-wrapper__units').html('Units amount: <kbd>' + units_amount + '</kbd>');
@@ -48,14 +52,14 @@ socket.on("country_hilight_res", function(data){
     } else if (user_color == 'blue'){
       user_color = '0099ff';
     };
-    $('area[data-title="' + countries + '"]').data("maphilight", { fillColor: user_color, fillOpacity: 0.3, stroke: false });
+    $('area[data-title="' + countries + '"]').data("maphilight", { alwaysOn: true, fillColor: user_color, fillOpacity: 0.3, stroke: false });
   };
 
-  // Wyróżnienie krajów bez jednostek domyślnie jest wyłączone
+  // Wyróżnienie krajów nie zajętych przez gracza jest domyślnie jest wyłączone
   $('#game-map-img').maphilight({
-    alwaysOn: true,
+    alwaysOn: false,
     fillColor: 'ffffff',
-    fillOpacity: 0,
+    fillOpacity: 0.3,
     stroke: false
   });
 

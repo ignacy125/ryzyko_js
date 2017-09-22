@@ -92,3 +92,9 @@ width: 100%;
   margin: auto;
   display: block;
 }
+
+.unit-icon {
+  flot: left;
+  height: 38px;
+  width: 38px;
+}
