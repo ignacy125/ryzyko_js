@@ -3,7 +3,7 @@ $(document).ready(function(){
   var unit_amount_text;
   var selected_country;
   var game_area = $('#game-map area');
-  var current_user = 2; // Test
+  var current_user = 1; // Test
 
   $( "area" ).each(function( index, element ) {
     var area_attr = $(element).attr("data-title");
