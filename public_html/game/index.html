@@ -19,7 +19,6 @@
     <script type="text/javascript" src="libs/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
     <script>
     $(document).ready(function(){
-      $('.tool-tip').tooltipster('open');
 
     });
     </script>
@@ -38,9 +37,6 @@
             <span>Countries owned:<br /><code>#countries_amount#</code></span>
           </p> -->
           <p class="game-wrapper__text">
-              <!-- <span class="game_info_text-log"> </span> <br />
-              <span class="game_info-units_amount_title">Units Amount:</span>
-              <span class="game_info-units_amount"></span> -->
               <br />
               <span class="game-wrapper__units">
 
@@ -49,7 +45,7 @@
               <span class="game-wrapper__console console">
 
               </span>
-                <i class="hid-btn fa fa-times tool" title="Usuń wiadomość"></i>
+              <i class="hid-btn fa fa-times tool" title="Usuń wiadomość"></i>
           </p>
 
           <div class="game-wrapper__buttons">
@@ -81,7 +77,7 @@
       <area target="" alt="North_africa" data-title="North_africa" href="" coords="419,423,515,443" shape="rect" class="tool-tip">
       <area target="" alt="Egypt" data-title="Egypt" href="" coords="519,387,558,406" shape="rect" class="tool-tip">
       <area target="" alt="East_africa" data-title="East_africa" href="" coords="624,459,565,490" shape="rect" class="tool-tip">
-      <area target="" alt="Congo"  href="" coords="510,505,562,522" shape="rect" class="tool-tip">
+      <area target="" alt="Congo" data-title="Congo" href="" coords="510,505,562,522" shape="rect" class="tool-tip">
       <area target="" alt="South_africa" data-title="South_africa" href="" coords="518,583,569,616" shape="rect" class="tool-tip">
       <area target="" alt="Iceland" data-title="Iceland" href="" coords="400,122,453,138" shape="rect" class="tool-tip">
       <area target="" alt="Great_britain" data-title="Great_britain" href="" coords="347,199,447,219" shape="rect" class="tool-tip">
@@ -117,10 +113,12 @@ $(document).ready(function(){
 
   document.getElementById('game-map-img').draggable = false;
   $('map').imageMapResize();
-  $('#game-map-img').maphilight({
-      alwaysOn: false,
-  });
   $('.tool-tip').tooltipster();
+
+  // $('.tool-tip').tooltipster({
+  //   content: "Lol"
+  // });
+  // $('.tool-tip').tooltipster('open');
 
 });
 </script>

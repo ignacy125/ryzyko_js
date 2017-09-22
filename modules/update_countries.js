@@ -91,7 +91,29 @@ var country = {
         }
    });
   connection.end();
-}
+},
+
+  hilight: function(data, callback){
+    connection = database.connect();
+    var query = 'SELECT Name, Color FROM Countries, Users ';
+    query += 'WHERE User_ID = ' + connection.escape(data.user_id) + ' ';
+    query += 'AND Player_ID = ' + connection.escape(data.user_id);
+    connection.query(query,
+      function (error, results, fields) {
+        if (error) {
+          console.log(error);
+          console.log("Błąd 1");
+          callback(false);
+        }
+        if (results.length > 0) {
+          callback(true, results);
+        } else {
+          console.log("Błąd 2");
+          callback(false);
+        }
+   });
+  connection.end();
+  }
 
 
 

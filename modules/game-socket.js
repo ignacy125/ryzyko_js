@@ -96,9 +96,9 @@ var current_user;
                     }
 
                   });
-                  newData.unit_amount = data.unit_amount
-                  newData.selected_country = data.to
-                  console.log(newData)
+                  newData.unit_amount = data.unit_amount;
+                  newData.selected_country = data.to;
+                  console.log(newData);
                   update_countries.country.addUnit(newData, function(valid) {
                     if(valid) {
                       console.log(valid);
@@ -106,9 +106,18 @@ var current_user;
                       console.log("Błąd");
                     }
                   });
-
-
                 }
+              } else {
+                console.log("Błąd");
+              }
+            });
+          });
+
+          socket.on("country_hilight", function(data){
+            update_countries.country.hilight(data, function(valid, results) {
+              if(valid) {
+                console.log("Hiligth działa", results);
+                socket.emit("country_hilight_res", results)
               } else {
                 console.log("Błąd");
               }

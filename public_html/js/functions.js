@@ -10,7 +10,7 @@ function login() {
 };
 
 // Limit akcji na daną fazę
-var actions_limit =  999;
+var actions_limit =  180;
 
 // Dane o akcjach do wysłania na serwer
 turn_data = {
@@ -52,6 +52,13 @@ var player = {
 };
 
 var country = {
+
+  hilight: function(user_id){
+    socket.emit("country_hilight", {
+        "user_id": user_id
+    });
+  },
+
   unit: {
     add: function(country_name, amount) {
       action.send("addUnit", amount)

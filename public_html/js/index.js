@@ -6,11 +6,11 @@ $(document).ready(function(){
 
   $( "area" ).each(function( index, element ) {
     var area_attr = $(element).attr("data-title");
-    country.unit.get(area_attr);
-    
+    // country.unit.get(area_attr);
   });
 
-
+  // Zaznaczenie krajów użytkownika
+  country.hilight(2);
 
   $(game_area).click(function(event) {
       event.preventDefault();
@@ -19,28 +19,25 @@ $(document).ready(function(){
       country.unit.get(selected_country);
       country.unit.add(selected_country, 1);
       // Reset ilości jednostek
-      $('.btn-reset').show();
+      $('.btn-game').show();
       $('.btn-reset').click(function(){
         country.unit.reset(selected_country);
       });
-      $('.btn-relocate').show();
-
   });
 
   // Pobranie ilości jednostek
   $(game_area).on('mouseover', function(){
       selected_country = $(this).attr('data-title');
       country.unit.get(selected_country);
-
   });
 
   // Usunięcie jednostki
-  $('#game-map area').contextmenu(function(event){
+  $(game_area).contextmenu(function(event){
     event.preventDefault();
     country.unit.add(selected_country, -1);
   });
 
-  // Informacje o dyslokacji jednostek do przesłania na serwer
+  // Informacje o dyslokacji jednostek
   relocate_data = {
     "from": null,
     "to": null,
@@ -68,7 +65,6 @@ $(document).ready(function(){
   });
 
   // Konsola
-
   $('.fa-times').click(function(event){
     event.preventDefault();
     $('.console').empty();
