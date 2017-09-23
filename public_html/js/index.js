@@ -20,12 +20,15 @@ $(document).ready(function(){
       player.createLog("Selected country: ", selected_country);
       country.unit.get(selected_country);
       country.unit.add(selected_country, 1, current_user);
-      // Reset ilości jednostek
       $('.btn-game').show();
+      // Reset kraju
       $('.btn-reset').click(function(){
         country.unit.reset(selected_country);
+        // country.hilight(current_user, selected_country);
       });
   });
+
+
 
   // Pobranie ilości jednostek
   $(game_area).on('mouseover', function(){
@@ -58,6 +61,7 @@ $(document).ready(function(){
         relocate_data["unit_amount"] = unit_amount;
         socket.emit("relocate_data_emit", relocate_data);
         console.log(relocate_data);
+        return true;
       });
   });
 

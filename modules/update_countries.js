@@ -43,6 +43,7 @@ var country = {
     connection = database.connect();
     var query = 'UPDATE Countries ';
     query += 'SET Units_amount = 0 ';
+    query += ', User_ID = 0 ';
     query += 'WHERE Name = ' + connection.escape(data.selected_country);
     connection.query(query,
       function (error, results, fields) {

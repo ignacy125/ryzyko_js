@@ -7,8 +7,7 @@ socket.on("country_unit_get_res", function(data){
   var units_amount = data.result["Units_amount"];
   var country = data.country;
   var unit_img = '<img src="images/unit-icon-2.png" class="unit-icon">';
-  var units_tooltip = unit_img + '<h4 style="float: right">' + units_amount + "</h4>";
-
+  var units_tooltip = unit_img + '<h4 class="unit-title">' + units_amount + "</h4>";
   $('area[data-title="' + country + '"]').tooltipster({
       contentAsHTML: true,
       content: units_tooltip,
@@ -52,7 +51,9 @@ socket.on("country_hilight_res", function(data){
     } else if (user_color == 'blue'){
       user_color = '0099ff';
     };
-    $('area[data-title="' + countries + '"]').data("maphilight", { alwaysOn: true, fillColor: user_color, fillOpacity: 0.3, stroke: false });
+    $('area[data-title="' + countries + '"]').data("maphilight",
+    { alwaysOn: true, fillColor: user_color, fillOpacity: 0.3, stroke: false }
+    );
   };
 
   // Wyróżnienie krajów nie zajętych przez gracza jest domyślnie jest wyłączone

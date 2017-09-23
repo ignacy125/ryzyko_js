@@ -10,7 +10,7 @@ function login() {
 };
 
 // Limit akcji na daną fazę
-var actions_limit =  1;
+var actions_limit =  999;
 
 // Dane o akcjach do wysłania na serwer
 turn_data = {
@@ -47,14 +47,19 @@ var player = {
     if(typeof data === 'undefined'){
       data = 'default';
     }
-    $('.console').html('<span class="console-log"> ' + content + data + "</span><br>");
+    $('.console').html('<span class="console-log"> ' + content + '<kbd>' + data + '</kbd></span><br>');
     $(".fa-times").show();
   },
 };
 
 var country = {
 
-  hilight: function(user_id){
+  hilight: function(user_id, country){
+    if(typeof country === 'undefined'){
+      country = 'default';
+    } else {
+      $(country).data('maphilight', {fillOpacity: 0});
+    };
     socket.emit("country_hilight", {
         "user_id": user_id
     });
@@ -79,7 +84,7 @@ var country = {
     reset: function(country_name) {
       action.send("resetUnit", null);
       socket.emit("country_unit_reset", {
-        "selected_country": country_name,
+        "selected_country": country_name
       });
     }
   }

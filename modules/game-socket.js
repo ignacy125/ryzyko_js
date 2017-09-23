@@ -120,7 +120,7 @@ var current_user;
                 console.log("Hiligthed countries: \n", results);
                 socket.emit("country_hilight_res", results)
               } else {
-                console.log("Błąd");
+                console.log("Błąd podczas wyświetlania krajów");
               }
             });
           });
