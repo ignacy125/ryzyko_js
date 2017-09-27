@@ -10,7 +10,7 @@ function login() {
 };
 
 // Limit akcji na daną fazę
-var actions_limit =  999;
+var actions_limit =  1;
 
 // Dane o akcjach do wysłania na serwer
 turn_data = {
@@ -27,8 +27,8 @@ var action = {
     // action.count();
     if(turn_data.actions.length >= actions_limit){
       alert("Koniec ruchów");
-      // $(".overlay").css("pointer-events", "none");
-      $('#game-map area').off("click");
+      $(".overlay").css("pointer-events", "none");
+      // $('#game-map area').off("click");
     }
   }
 }
@@ -41,6 +41,7 @@ var player = {
       "user_id": user_id
 
     });
+    $('.btn-game').hide();
     $(".overlay").css("pointer-events", "none");
   },
   createLog: function createLog(content, data) {

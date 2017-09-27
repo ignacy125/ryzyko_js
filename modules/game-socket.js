@@ -18,19 +18,19 @@ var current_user;
           USER_IDS[user_id] = socket;
           console.log("________________USER GAME CONNECTED____________________" + user_id);
           socket.on('country_unit_add', function(data) {
-            update_countries.country.addUnit(data, function(valid) {
+            update_countries.country.addUnit(data, function(valid, message) {
               if(valid) {
                 console.log("Jednostka została przypisana do kraju " + data.selected_country);
                 socket.emit("country_unit_add_res", data);
               } else {
-                console.log("Błąd");
+                console.log(message);
               }
 
             });
           });
 
           socket.on("player_nextTurn", function(data){
-            console.log("Dziala " + data.user_id);
+            // console.log("Dziala " + data.user_id);
             turn_handler();
 
           });
@@ -126,17 +126,37 @@ var current_user;
           });
       });
 };
+var next = function(key, keys){
+  for (var i = 0; i < keys.length; i++) {
+    if (keys[i] == key) {
+
+        if (i == keys.length -1){
+          return keys[0];
+        } else {
+          return keys[i + 1];
+        }
+    }
+  }
+};
 
 function turn_handler() {
-      current_user = current_user++ % Object.keys(USER_IDS).length + 1;
-      if(current_user == 0){
-        current_user++;
-      }
+      keys = Object.keys(USER_IDS);
+      current_user = next(current_user, keys);
+      // current_user = current_user++ % keys.length + 1;
+      //
+      // if(current_user == 0){
+      //   current_user++;
+      // }
       socket = USER_IDS[current_user];
+
+      // console.log(USER_IDS);
       console.log("Current user: " + current_user);
       socket.emit("your_turn_msg", {
           id: current_user
       });
 }
+
+
+
 module.exports.game_handler = game_handler;
 // module.exports.turn_handler = turn_handler;

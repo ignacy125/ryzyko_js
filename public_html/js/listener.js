@@ -34,6 +34,7 @@ socket.on("country_unit_reset_res", function(data){
 socket.on("your_turn_msg", function(data){
   console.log("Dziala");
   $('.overlay').css("pointer-events", "auto");
+  $('.btn-game').show();
 
 });
 
@@ -46,7 +47,7 @@ socket.on("country_hilight_res", function(data){
   for (i in data) {
     countries = data[i]["Name"];
     user_color = data[i]["Color"];
-    if(user_color == 'green'){
+    if (user_color == 'green'){
       user_color = '33cc33';
     } else if (user_color == 'blue'){
       user_color = '0099ff';
