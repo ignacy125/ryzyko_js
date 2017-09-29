@@ -10,7 +10,7 @@ function login() {
 };
 
 // Limit akcji na daną fazę
-var actions_limit =  1;
+var actions_limit =  999;
 
 // Dane o akcjach do wysłania na serwer
 turn_data = {
@@ -18,6 +18,14 @@ turn_data = {
 
   ]
 };
+
+var game = {
+  reset: function(){
+    socket.emit("game_reset", {
+      "reset": true
+    });
+  }
+}
 
 var action = {
   send: function(action_name, data){
@@ -79,6 +87,12 @@ var country = {
     get: function(country_name) {
       socket.emit("country_unit_get", {
         "selected_country": country_name,
+      });
+    },
+
+    getAll: function() {
+      socket.emit("country_unit_getAll", {
+        "all": null
       });
     },
 

@@ -15,7 +15,6 @@ var country = {
                  console.log(results);
                  callback(false, null);
                } else {
-
                  if (results.message.includes("Changed: 0")) {
                      console.log(results.message);
                      callback(false, "Country already assigned");
@@ -45,6 +44,27 @@ var country = {
      });
     connection.end();
   },
+
+  getAllUnits: function(data, callback) {
+    connection = database.connect();
+    var query = 'SELECT Name, Units_amount FROM Countries ';
+    query += 'WHERE Name = '*' ';
+    connection.query(query,
+      function (error, results, fields) {
+        if (error) {
+          console.log(error);
+          callback(false);
+        }
+        if (results.length > 0) {
+          callback(true, results);
+        } else {
+          console.log("Other sort of error")
+          callback(false);
+        }
+   });
+  connection.end();
+},
+
   resetUnitAmount: function(data, callback) {
     connection = database.connect();
     var query = 'UPDATE Countries ';

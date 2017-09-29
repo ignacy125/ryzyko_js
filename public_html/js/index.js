@@ -12,6 +12,8 @@ $(document).ready(function(){
     // country.unit.get(area_attr);
   });
 
+  country.unit.getAll();
+
   // Zaznaczenie krajów użytkownika
   country.hilight(user_id);
 
@@ -27,9 +29,11 @@ $(document).ready(function(){
         country.unit.reset(selected_country);
         // country.hilight(current_user, selected_country);
       });
+      // Reset gry
+      $('.btn-reset-game').click(function(){
+        game.reset();
+      });
   });
-
-
 
   // Pobranie ilości jednostek
   $(game_area).on('mouseover', function(){

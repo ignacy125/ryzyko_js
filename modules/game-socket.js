@@ -52,6 +52,18 @@ var current_user;
               });
           });
 
+          socket.on('country_unit_getAll', function (data) {
+              update_countries.country.getAllUnits(data, function (valid, results) {
+                  if (valid) {
+                      //console.log(results);
+                      socket.emit("country_unit_getAll_res", results);
+                  } else {
+                      console.log("Błąd unit get");
+                  }
+
+              });
+          });
+
           socket.on('country_unit_reset', function(data){
             update_countries.country.resetUnitAmount(data, function (valid) {
                 if (valid) {
@@ -117,7 +129,7 @@ var current_user;
           socket.on("country_hilight", function(data){
             update_countries.country.hilight(data, function(valid, results) {
               if(valid) {
-                console.log("Hiligthed countries: \n", results);
+                // console.log("Hiligthed countries: \n", results);
                 socket.emit("country_hilight_res", results)
               } else {
                 console.log("Błąd podczas wyświetlania krajów");

@@ -2,7 +2,7 @@ $(document).ready(function(){
 
 socket = io('/game');
 
-// Odpowiedź na informacje o ilości jednostek w kraju
+// Pobranie ilosci jednostek
 socket.on("country_unit_get_res", function(data){
   var units_amount = data.result["Units_amount"];
   var country = data.country;
@@ -20,13 +20,33 @@ socket.on("country_unit_get_res", function(data){
 
 });
 
-// Odpowiedź na dodanie jednostki
+// Pobranie ilosci jednostek ze wszystkich krajow
+socket.on("country_unit_getAll_res", function(data){
+  var i;
+  var units_amount;
+  var country_name;
+  for (i in data) {
+    units_amount = data[i]["Units_amount"];
+    country_name = data[i]["Name"];
+    var unit_img = '<img src="images/unit-icon-2.png" class="unit-icon">';
+    var units_tooltip = unit_img + '<h4 class="unit-title">' + units_amount + "</h4>";
+    $('area[data-title="' + country_name + '"]').tooltipster({
+        contentAsHTML: true,
+        content: units_tooltip,
+        multiple: true,
+        side: 'top',
+        theme: 'tooltipster-borderless'
+      });
+  }
+});
+
+// Dodanie jednostek
 socket.on('country_unit_add_res', function(data){
     $('.console').html('<span class="console-log"> Unit' + ' (' + data.unit_amount + ') was located to: ' + '<kbd>' + data.selected_country + '</kbd></span>');
     $(".fa-times").show();
 });
 
-// Odpowiedź na reset
+// Reset jednostek
 socket.on("country_unit_reset_res", function(data){
     player.createLog('Zresetowano ilość jednostek w kraju ', data);
 });
@@ -38,7 +58,7 @@ socket.on("your_turn_msg", function(data){
 
 });
 
-// Zaznaczenie krajów na kolor gracza
+// Wyroznienie krajow
 socket.on("country_hilight_res", function(data){
 
   var countries;
@@ -57,7 +77,6 @@ socket.on("country_hilight_res", function(data){
     );
   };
 
-  // Wyróżnienie krajów nie zajętych przez gracza jest domyślnie jest wyłączone
   $('#game-map-img').maphilight({
     alwaysOn: false,
     fillColor: 'ffffff',

@@ -7,6 +7,7 @@ var fs = require('fs');
 var sha1 = require('sha1');
 var database = require('./modules/database-connect');
 var fetch_data = require('./modules/fetch-data');
+var game_module = require('./modules/game_module');
 var update_countries = require('./modules/update_countries');
 var port = 80;
 USERS_LIST = {}
