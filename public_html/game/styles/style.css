@@ -1,41 +1,24 @@
+/* MAIN STYLE */
 body, html {
   width: 100%;
   height:100%;
   margin: 0;
   padding: 0;
+  min-height: 100%;
 }
-.overlay {
-pointer-events: none;
-}
+
 .container-fluid {
   padding: 0;
   margin: 0 auto;
 }
-#game-wrapper {
-  width: 88%;
-  margin: 0 auto;
-  padding: 0;
-  height: 100%;
-}
-.hid-btn {
-  display: none;
-}
-.btn-game {
-  margin-top: 30px;
+
+.overlay {
+pointer-events: none;
 }
 
-#game-map-img {
-  width: 100%;
-  height: 100%;
-  margin: auto;
-  display: block;
-  -khtml-user-select: none;
-  -o-user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
-}
-#game_info_wrapper-1 {
+/* Left game sidebar */
+
+.game-wrapper-left {
 position: absolute;
 float: left;
 background-image: url('../images/col-bg.jpg');
@@ -43,34 +26,47 @@ height: 100%;
 width: 140px;
 z-index: 1;
 }
-#game_info_wrapper-2 {
-  position: relative;
-float: right;
-background-image: url('../images/col-bg.jpg');
-height: 100%;
-width: 140px;
-z-index: 1;
-}
-.game_info_el {
-  margin-top: 35px;
 
-}
-.game_info_header {
+.game-wrapper__header {
 float: left;
 color: white;
 text-align: center;
 line-height: 25px;
 padding: 5px;
 }
-#units_wrapper {
-float: left;
+
+.hid-btn {
+  display: none;
 }
-.game_info_text {
+.btn-game {
+  margin-top: 30px;
+  width: 100%;
+}
+
+.game-wrapper__buttons {
+  margin: 0 auto;
+  width: 75%;
+}
+
+.game-wrapper__text {
 color: white;
 text-align: center;
 line-height: 30px;
 width: 100%;
 }
+
+.console {
+  margin-top: 10px;
+}
+
+.game-wrapper__units, .game-wrapper__console {
+  display: block;
+}
+
+.fa-times {
+  cursor: pointer;
+}
+
 .game_info_icon-arrow {
   position: absolute;
   bottom: 0;
@@ -79,4 +75,30 @@ width: 100%;
   margin: auto;
   margin-bottom: 10px;
   cursor: pointer;
+}
+
+/* Game map */
+
+.game-map {
+  width: 88%;
+  margin: 0 auto;
+  padding: 0;
+  height: 100%;
+}
+
+#game-map-img {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  display: block;
+}
+
+.unit-icon {
+  flot: left;
+  height: 38px;
+  width: 38px;
+}
+
+.unit-title {
+  float: right;
 }

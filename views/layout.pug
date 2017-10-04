@@ -1,0 +1,17 @@
+doctype
+html
+  head
+  title #{site_title}
+  script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
+  link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" rel="stylesheet")
+  link(href="static/css/style.css" type="text/css" rel="stylesheet")
+  body 
+    div.container-fluid
+      div.container.form
+        form(method='POST' action='/login')
+          div.form-group
+            label(for='name') Name:
+            input#name.form-control(type='text', placeholder='Username' name='name')
+            label(for='password') Password:
+            input#password.form-control(type='password', placeholder="*****" name="password")
+              

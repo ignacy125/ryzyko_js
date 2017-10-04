@@ -5,23 +5,34 @@ var server = require('http').Server(app);
 var io = require('socket.io')(server, {});
 var fs = require('fs');
 var sha1 = require('sha1');
+var path = require("path");
 var database = require('./modules/database-connect');
 var fetch_data = require('./modules/fetch-data');
+var game_module = require('./modules/game_module');
 var update_countries = require('./modules/update_countries');
 var port = 80;
 USERS_LIST = {}
 
-//app.use(express.static(__dirname)); // Current directory is root
-app.use('/', express.static(__dirname + '/public_html')); //  "public" off of current is root
+app.use('/static', express.static(__dirname + '/static'));
+app.engine('pug', require('pug').__express);
+
+app.set('view engine', 'pug');
+app.set("views", path.join(__dirname, "views"));
+app.get('/', function (req, res) {
+  res.render('index',
+  { site_title : 'Login' }
+  );
+});
+
 server.listen(port);
 console.log("Working on port " + port);
 
-app.get('/', function (req, res) {
-    res.writeHead(301,
-        {Location: '/user/login/'}
-    );
-    res.end();
-});
+// app.get('/', function (req, res) {
+//     res.writeHead(301,
+//         {Location: '/user/login/'}
+//     );
+//     res.end();
+// });
 
 app.get('/game/:userID', function (req, res) {
   USERS_LIST[0] = req.params.userID;
@@ -30,8 +41,7 @@ app.get('/game/:userID', function (req, res) {
   res.write(data);
   res.end();
 
-});
-
+  });
 });
 
 function handler(req, res) {
@@ -45,13 +55,15 @@ function handler(req, res) {
             res.end(data);
         });
 }
+
 var logon_socket = require("./modules/logon-socket");
 var game_socket = require('./modules/game-socket');
+
 logon_socket.user.logon(io);
 console.log(USERS_LIST);
 game_socket.game_handler(io);
-// game_socket.turn_handler();
 
+// game_socket.turn_handler();
 
  setInterval(function () {
 //     for (var i in SOCKETS_LIST) {
