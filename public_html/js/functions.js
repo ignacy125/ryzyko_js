@@ -9,12 +9,22 @@ function login() {
     })
 };
 
-var actions_limit =  1;
+// Limit akcji na daną fazę
+var actions_limit =  999;
 
+// Dane o akcjach do wysłania na serwer
 turn_data = {
   "actions": [
 
   ]
+};
+
+var game = {
+  reset: function(){
+    socket.emit("game_reset", {
+      "reset": true
+    });
+  }
 }
 
 var action = {
@@ -23,20 +33,12 @@ var action = {
       {action: action_name, data: data}
     );
     // action.count();
-    if(turn_data.actions.length <= actions_limit){
+    if(turn_data.actions.length >= actions_limit){
       alert("Koniec ruchów");
       $(".overlay").css("pointer-events", "none");
+      // $('#game-map area').off("click");
     }
-
   }
-  // count: function(){
-  //   if(action_counter == 0) {
-  //     alert("Koniec tury");
-  //     $(".overlay").css("pointer-events", "none");
-  //   }
-  //
-  //   return action_counter++;
-  // }
 }
 
 var player = {
@@ -47,23 +49,38 @@ var player = {
       "user_id": user_id
 
     });
+    $('.btn-game').hide();
     $(".overlay").css("pointer-events", "none");
   },
   createLog: function createLog(content, data) {
     if(typeof data === 'undefined'){
       data = 'default';
     }
-    $('.game_info-console').html('<span class="console-log"> ' + content + data + "</span><br>");
+    $('.console').html('<span class="console-log"> ' + content + '<kbd>' + data + '</kbd></span><br>');
+    $(".fa-times").show();
   },
 };
 
 var country = {
+
+  hilight: function(user_id, country){
+    if(typeof country === 'undefined'){
+      country = 'default';
+    } else {
+      $(country).data('maphilight', {fillOpacity: 0});
+    };
+    socket.emit("country_hilight", {
+        "user_id": user_id
+    });
+  },
+
   unit: {
-    add: function(country_name, amount) {
+    add: function(country_name, amount, user) {
       action.send("addUnit", amount)
       socket.emit("country_unit_add", {
         "selected_country": country_name,
         "unit_amount": amount,
+        "user_id": user
     });
   },
 
@@ -73,10 +90,16 @@ var country = {
       });
     },
 
+    getAll: function() {
+      socket.emit("country_unit_getAll", {
+        "all": null
+      });
+    },
+
     reset: function(country_name) {
       action.send("resetUnit", null);
       socket.emit("country_unit_reset", {
-        "selected_country": country_name,
+        "selected_country": country_name
       });
     }
   }
